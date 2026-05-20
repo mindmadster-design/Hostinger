@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SILIQ Stores — visit our atelier in Paris, our store in London or our studio in Milan." />
+  <meta name="theme-color" content="#0F0F10" />
+  <title>Stores — SILIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <link rel="prefetch" href="contact.html" />
+  <link rel="prefetch" href="about.html" />
+</head>
+<body>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="announcement">
+    <div class="announcement__track">
+      <span>Visit Our Atelier By Appointment</span>
+      <span>·</span>
+      <span>Stockists In 24 Cities Worldwide</span>
+      <span>·</span>
+      <span>Visit Our Atelier By Appointment</span>
+      <span>·</span>
+      <span>Stockists In 24 Cities Worldwide</span>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <nav class="nav nav--left">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html" class="is-active">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="index.html" class="logo" aria-label="SILIQ Home" data-cursor="logo">SILIQ</a>
+      <div class="nav nav--right">
+        <button class="icon-btn" aria-label="Search" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <a href="#" class="icon-btn" aria-label="Account" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        </a>
+        <button class="icon-btn cart-trigger" aria-label="Cart" id="cartTrigger" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 7h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">2</span>
+        </button>
+        <button class="icon-btn menu-trigger" id="menuTrigger" aria-label="Menu" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?w=2000&q=80" alt="Atelier exterior" data-parallax="0.18" />
+    </div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb" data-anim="fade-up">Home / Stores</p>
+      <h1 data-anim="words">Visit <em>us.</em></h1>
+      <p class="page-hero__lede" data-anim="fade-up">Three small rooms in three quiet cities. Each one is staffed by a maker who can handle a piece, polish a ring, or take a commission.</p>
+    </div>
+  </section>
+
+  <!-- Stores grid (3 cities) -->
+  <section class="section section--stores">
+    <div class="store-card">
+      <div class="store-card__media mask-reveal">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=80" alt="Paris" data-parallax="0.12" />
+      </div>
+      <div class="store-card__copy">
+        <p class="eyebrow" data-anim="fade-up">Flagship Atelier</p>
+        <h2 data-anim="words">Paris</h2>
+        <p data-anim="fade-up">14 Rue de l&rsquo;Argent, 75001 Paris, France</p>
+        <ul class="store-info">
+          <li><span class="muted">Hours</span><span>Tue–Sat · 10.00 — 18.00</span></li>
+          <li><span class="muted">Phone</span><span><a href="tel:+33000000000" class="link-underline" data-cursor="hover">+33 0 00 00 00 00</a></span></li>
+          <li><span class="muted">Email</span><span><a href="mailto:paris@siliq.com" class="link-underline" data-cursor="hover">paris@siliq.com</a></span></li>
+          <li><span class="muted">Métro</span><span>Louvre-Rivoli, Châtelet</span></li>
+        </ul>
+        <div class="store-card__actions">
+          <a href="contact.html" class="btn btn--ghost btn--dark" data-cursor="hover">Book Appointment</a>
+          <a href="#" class="link-underline" data-cursor="hover">Get directions →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="store-card store-card--reverse">
+      <div class="store-card__media mask-reveal">
+        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80" alt="London" data-parallax="0.12" />
+      </div>
+      <div class="store-card__copy">
+        <p class="eyebrow" data-anim="fade-up">Mayfair Showroom</p>
+        <h2 data-anim="words">London</h2>
+        <p data-anim="fade-up">7 Mount Street, London W1K 2BS, United Kingdom</p>
+        <ul class="store-info">
+          <li><span class="muted">Hours</span><span>Mon–Sat · 11.00 — 19.00</span></li>
+          <li><span class="muted">Phone</span><span><a href="tel:+44000000000" class="link-underline" data-cursor="hover">+44 0 0000 0000</a></span></li>
+          <li><span class="muted">Email</span><span><a href="mailto:london@siliq.com" class="link-underline" data-cursor="hover">london@siliq.com</a></span></li>
+          <li><span class="muted">Tube</span><span>Bond Street, Green Park</span></li>
+        </ul>
+        <div class="store-card__actions">
+          <a href="contact.html" class="btn btn--ghost btn--dark" data-cursor="hover">Book Appointment</a>
+          <a href="#" class="link-underline" data-cursor="hover">Get directions →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="store-card">
+      <div class="store-card__media mask-reveal">
+        <img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=1400&q=80" alt="Milan" data-parallax="0.12" />
+      </div>
+      <div class="store-card__copy">
+        <p class="eyebrow" data-anim="fade-up">Brera Studio</p>
+        <h2 data-anim="words">Milan</h2>
+        <p data-anim="fade-up">Via Solferino 9, 20121 Milano, Italy</p>
+        <ul class="store-info">
+          <li><span class="muted">Hours</span><span>Tue–Sat · 10.30 — 19.00</span></li>
+          <li><span class="muted">Phone</span><span><a href="tel:+39000000000" class="link-underline" data-cursor="hover">+39 02 0000 0000</a></span></li>
+          <li><span class="muted">Email</span><span><a href="mailto:milano@siliq.com" class="link-underline" data-cursor="hover">milano@siliq.com</a></span></li>
+          <li><span class="muted">Metro</span><span>Lanza, Moscova</span></li>
+        </ul>
+        <div class="store-card__actions">
+          <a href="contact.html" class="btn btn--ghost btn--dark" data-cursor="hover">Book Appointment</a>
+          <a href="#" class="link-underline" data-cursor="hover">Get directions →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stockists strip -->
+  <section class="section section--stockists">
+    <div class="section__head section__head--center">
+      <p class="eyebrow" data-anim="fade-up">Stockists Worldwide</p>
+      <h2 class="section__title" data-anim="words">Found in good hands.</h2>
+    </div>
+    <div class="stockist-list" data-anim="press">
+      <span>DOVER STREET MARKET — TOKYO</span>
+      <span>10 CORSO COMO — SEOUL</span>
+      <span>BERGDORF GOODMAN — NEW YORK</span>
+      <span>THE WEBSTER — MIAMI</span>
+      <span>LANE CRAWFORD — HONG KONG</span>
+      <span>HOLT RENFREW — TORONTO</span>
+      <span>SISTER — STOCKHOLM</span>
+      <span>RUE MADAME — BARCELONA</span>
+      <span>NET-A-PORTER — ONLINE</span>
+      <span>MR PORTER — ONLINE</span>
+    </div>
+  </section>
+
+  <!-- Brand marquee -->
+  <section class="brand-marquee" aria-hidden="true">
+    <div class="brand-marquee__track">
+      <span>Paris</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>London</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Milan</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Visit By Appointment</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Paris</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>London</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Milan</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Visit By Appointment</em></span>
+      <span class="brand-marquee__dot">●</span>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section--newsletter">
+    <div class="newsletter">
+      <p class="eyebrow" data-anim="fade-up">Correspondence</p>
+      <h2 data-anim="words">Letters from the atelier.</h2>
+      <p class="newsletter__lede" data-anim="fade-up">First access to new pieces, private events, and quiet stories from the bench.</p>
+      <form class="newsletter__form" data-anim="fade-up" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Thank you ✓';">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit" data-cursor="hover">Subscribe</button>
+      </form>
+      <p class="newsletter__fine">By subscribing you agree to our Privacy Policy.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="logo logo--sm">SILIQ</span>
+        <p>Handcrafted 925 sterling silver jewellery, made in limited editions.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <a href="shop.html" data-cursor="hover">All Jewellery</a>
+        <a href="shop.html" data-cursor="hover">Rings</a>
+        <a href="shop.html" data-cursor="hover">Necklaces</a>
+        <a href="shop.html" data-cursor="hover">Earrings</a>
+        <a href="bridal.html" data-cursor="hover">Bridal Collection</a>
+      </div>
+      <div class="footer__col">
+        <h4>House</h4>
+        <a href="about.html" data-cursor="hover">About</a>
+        <a href="about.html" data-cursor="hover">Heritage</a>
+        <a href="stores.html" data-cursor="hover">Stores</a>
+        <a href="journal.html" data-cursor="hover">Journal</a>
+        <a href="contact.html" data-cursor="hover">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Care</h4>
+        <a href="contact.html" data-cursor="hover">Customer Service</a>
+        <a href="#" data-cursor="hover">Shipping &amp; Returns</a>
+        <a href="#" data-cursor="hover">Repair Service</a>
+        <a href="#" data-cursor="hover">Sizing Guide</a>
+        <a href="#" data-cursor="hover">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Follow</h4>
+        <a href="#" data-cursor="hover">Instagram</a>
+        <a href="#" data-cursor="hover">Pinterest</a>
+        <a href="#" data-cursor="hover">TikTok</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p>© <span id="year"></span> SILIQ Maison. All rights reserved.</p>
+      <p>925 · Hallmarked · Crafted by hand</p>
+    </div>
+  </footer>
+
+  <div class="drawer drawer--menu" id="mobileMenu" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--left">
+      <button class="drawer__close" data-close aria-label="Close menu">×</button>
+      <nav class="drawer-nav">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <hr />
+        <a href="#">Account</a>
+        <a href="#">Search</a>
+      </nav>
+    </aside>
+  </div>
+
+  <div class="drawer drawer--cart" id="cartDrawer" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--right">
+      <div class="drawer__head">
+        <h3>Your Bag <span class="muted">(2)</span></h3>
+        <button class="drawer__close" data-close aria-label="Close cart">×</button>
+      </div>
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=300&q=80" alt="" />
+          <div>
+            <h4>Aera Signet Ring</h4>
+            <p class="muted">Size 6 · Polished</p>
+            <p class="cart-item__price">$185</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&q=80" alt="" />
+          <div>
+            <h4>Lume Pendant</h4>
+            <p class="muted">18&quot; chain</p>
+            <p class="cart-item__price">$220</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+      </div>
+      <div class="drawer__foot">
+        <div class="cart-totals"><span>Subtotal</span><span>$405</span></div>
+        <p class="muted small">Shipping and taxes calculated at checkout.</p>
+        <a href="#" class="btn btn--primary btn--block" data-cursor="hover">Checkout</a>
+        <a href="#" class="link-underline cart-view" data-cursor="hover">View bag</a>
+      </div>
+    </aside>
+  </div>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact SILIQ — for atelier visits, bespoke commissions, repair service or general enquiries." />
+  <meta name="theme-color" content="#0F0F10" />
+  <title>Contact — SILIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- Prefetch other pages so nav is instant (no flash between pages) -->
+  <link rel="prefetch" href="index.html" />
+  <link rel="prefetch" href="shop.html" />
+  <link rel="prefetch" href="about.html" />
+</head>
+<body>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="announcement">
+    <div class="announcement__track">
+      <span>Complimentary Shipping On Orders Over $150</span>
+      <span>·</span>
+      <span>Handcrafted In Limited Editions</span>
+      <span>·</span>
+      <span>Lifetime Repair Service</span>
+      <span>·</span>
+      <span>Complimentary Shipping On Orders Over $150</span>
+      <span>·</span>
+      <span>Handcrafted In Limited Editions</span>
+      <span>·</span>
+      <span>Lifetime Repair Service</span>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <nav class="nav nav--left">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="is-active">Contact</a>
+      </nav>
+      <a href="index.html" class="logo" aria-label="SILIQ Home" data-cursor="logo">SILIQ</a>
+      <div class="nav nav--right">
+        <button class="icon-btn" aria-label="Search" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <a href="#" class="icon-btn" aria-label="Account" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        </a>
+        <button class="icon-btn cart-trigger" aria-label="Cart" id="cartTrigger" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 7h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">2</span>
+        </button>
+        <button class="icon-btn menu-trigger" id="menuTrigger" aria-label="Menu" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=2000&q=80" alt="SILIQ Atelier" data-parallax="0.18" />
+    </div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb" data-anim="fade-up">Home / Contact</p>
+      <h1 data-anim="words">Get in <em>touch.</em></h1>
+      <p class="page-hero__lede" data-anim="fade-up">Whether you are considering a piece, planning a commission, or visiting the atelier — we&rsquo;d love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact methods grid -->
+  <section class="section section--contact-methods">
+    <div class="contact-methods">
+      <a href="#contact-form" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <rect x="4" y="8" width="24" height="16" />
+            <path d="M4 10l12 9 12-9" />
+          </svg>
+        </div>
+        <p class="eyebrow">Write</p>
+        <h3>hello@siliq.com</h3>
+        <p class="contact-method-card__meta">For general enquiries — we reply within 24h.</p>
+        <span class="link-arrow">Send a note →</span>
+      </a>
+
+      <a href="tel:+33000000000" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M22 19v3a3 3 0 0 1-3 3 18 18 0 0 1-15-15 3 3 0 0 1 3-3h3a1 1 0 0 1 1 0.7l1.5 4.5-2.5 2.5a14 14 0 0 0 6 6l2.5-2.5 4.5 1.5a1 1 0 0 1 0.7 1z"/>
+          </svg>
+        </div>
+        <p class="eyebrow">Call</p>
+        <h3>+33 0 00 00 00</h3>
+        <p class="contact-method-card__meta">Tuesday — Saturday, 10.00 — 18.00 CET.</p>
+        <span class="link-arrow">Speak with us →</span>
+      </a>
+
+      <a href="#map" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M16 4a8 8 0 0 1 8 8c0 6-8 16-8 16S8 18 8 12a8 8 0 0 1 8-8z" />
+            <circle cx="16" cy="12" r="3" />
+          </svg>
+        </div>
+        <p class="eyebrow">Visit</p>
+        <h3>14 Rue de l&rsquo;Argent</h3>
+        <p class="contact-method-card__meta">75001 Paris, France · By appointment.</p>
+        <span class="link-arrow">View location →</span>
+      </a>
+
+      <a href="mailto:press@siliq.com" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M6 6h12l8 8v12H6z" />
+            <path d="M18 6v8h8" />
+          </svg>
+        </div>
+        <p class="eyebrow">Press &amp; Wholesale</p>
+        <h3>press@siliq.com</h3>
+        <p class="contact-method-card__meta">Editorial requests, samples, B2B partnerships.</p>
+        <span class="link-arrow">Get in touch →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact form section: form + atelier image -->
+  <section class="section section--contact" id="contact-form">
+    <div class="contact-grid contact-grid--reverse">
+      <div class="contact-form-wrap">
+        <p class="eyebrow" data-anim="fade-up">Send a Message</p>
+        <h2 data-anim="words">Tell us a little about <em>your enquiry.</em></h2>
+        <p data-anim="fade-up" class="contact-form-wrap__lede">Use the form below for anything — we read every message, and reply by hand.</p>
+        <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Sent ✓ — thank you'; this.querySelector('button').disabled = true;">
+          <div class="contact-form__row">
+            <label>
+              <span>First Name</span>
+              <input type="text" required />
+            </label>
+            <label>
+              <span>Last Name</span>
+              <input type="text" required />
+            </label>
+          </div>
+          <div class="contact-form__row">
+            <label>
+              <span>Email</span>
+              <input type="email" required />
+            </label>
+            <label>
+              <span>Phone <small>(optional)</small></span>
+              <input type="tel" />
+            </label>
+          </div>
+          <label>
+            <span>Subject</span>
+            <select>
+              <option>General Enquiry</option>
+              <option>Commission</option>
+              <option>Repair Service</option>
+              <option>Press</option>
+              <option>Wholesale</option>
+              <option>Atelier Visit</option>
+            </select>
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea rows="6" required placeholder="Tell us what you have in mind..."></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary" data-cursor="hover" data-magnetic>Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-aside">
+        <div class="contact-aside__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1400&q=80" alt="SILIQ atelier interior" data-parallax="0.15" />
+        </div>
+        <div class="contact-aside__hours">
+          <p class="eyebrow">Atelier Hours</p>
+          <ul class="hours-list">
+            <li><span>Monday</span><span class="muted">Closed</span></li>
+            <li><span>Tuesday</span><span>10.00 — 18.00</span></li>
+            <li><span>Wednesday</span><span>10.00 — 18.00</span></li>
+            <li><span>Thursday</span><span>10.00 — 18.00</span></li>
+            <li><span>Friday</span><span>10.00 — 18.00</span></li>
+            <li><span>Saturday</span><span>10.00 — 18.00</span></li>
+            <li><span>Sunday</span><span class="muted">By appointment</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map / atelier exterior -->
+  <section class="section--map mask-reveal" id="map">
+    <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?w=2000&q=80" alt="Atelier exterior" data-parallax="0.12" />
+    <div class="section--map__caption">
+      <p class="eyebrow">Visit The Atelier</p>
+      <h3>14 Rue de l&rsquo;Argent<br />75001 Paris</h3>
+      <p class="muted small">By appointment, Tuesday — Saturday.</p>
+      <a href="#contact-form" class="link-underline" data-cursor="hover">Book a visit</a>
+    </div>
+  </section>
+
+  <!-- Brand marquee strip -->
+  <section class="brand-marquee" aria-hidden="true">
+    <div class="brand-marquee__track">
+      <span>SILIQ</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Maison de Argent</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Paris</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Visit · Write · Commission</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>SILIQ</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Maison de Argent</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Paris</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Visit · Write · Commission</em></span>
+      <span class="brand-marquee__dot">●</span>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--faq">
+    <div class="section__head section__head--center">
+      <p class="eyebrow" data-anim="fade-up">Frequently Asked</p>
+      <h2 class="section__title" data-anim="words">A few quiet answers.</h2>
+    </div>
+    <div class="faq">
+      <details class="faq__item" open>
+        <summary>How long does a custom commission take?</summary>
+        <p>Bespoke pieces typically take 6–10 weeks. We&rsquo;ll share sketches, then a wax model for approval before casting. Larger or more intricate pieces may take longer — we will always be transparent about timing.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Do you offer engraving?</summary>
+        <p>Yes — every piece can be engraved by hand. Add a note at checkout, or write to us for monogram options. Engraving is complimentary on most pieces.</p>
+      </details>
+      <details class="faq__item">
+        <summary>What is your repair policy?</summary>
+        <p>Each SILIQ piece comes with lifetime polishing and minor repair, complimentary. For more substantial repairs, we provide a fair quote — repair before replacement, always.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Do you ship internationally?</summary>
+        <p>Yes — we ship worldwide via insured express courier. Orders above $150 ship complimentary. International orders may incur customs duties depending on the destination.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Can I visit the atelier?</summary>
+        <p>By appointment, with pleasure. Email us at <a href="mailto:hello@siliq.com">hello@siliq.com</a> to arrange a visit. We are happy to receive private appointments outside of regular hours by arrangement.</p>
+      </details>
+      <details class="faq__item">
+        <summary>What is your return policy?</summary>
+        <p>Standard pieces may be returned within 14 days for a full refund or exchange, provided they are unworn and in original condition. Bespoke and engraved pieces are final sale.</p>
+      </details>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="logo logo--sm">SILIQ</span>
+        <p>Handcrafted 925 sterling silver jewellery, made in limited editions.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <a href="shop.html" data-cursor="hover">All Jewellery</a>
+        <a href="shop.html" data-cursor="hover">Rings</a>
+        <a href="shop.html" data-cursor="hover">Necklaces</a>
+        <a href="shop.html" data-cursor="hover">Earrings</a>
+        <a href="bridal.html" data-cursor="hover">Bridal Collection</a>
+      </div>
+      <div class="footer__col">
+        <h4>House</h4>
+        <a href="about.html" data-cursor="hover">About</a>
+        <a href="about.html" data-cursor="hover">Heritage</a>
+        <a href="stores.html" data-cursor="hover">Stores</a>
+        <a href="journal.html" data-cursor="hover">Journal</a>
+        <a href="contact.html" data-cursor="hover">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Care</h4>
+        <a href="contact.html" data-cursor="hover">Customer Service</a>
+        <a href="#" data-cursor="hover">Shipping & Returns</a>
+        <a href="#" data-cursor="hover">Repair Service</a>
+        <a href="#" data-cursor="hover">Sizing Guide</a>
+        <a href="#" data-cursor="hover">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Follow</h4>
+        <a href="#" data-cursor="hover">Instagram</a>
+        <a href="#" data-cursor="hover">Pinterest</a>
+        <a href="#" data-cursor="hover">TikTok</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p>© <span id="year"></span> SILIQ Maison. All rights reserved.</p>
+      <p>925 · Hallmarked · Crafted by hand</p>
+    </div>
+  </footer>
+
+  <!-- Mobile menu -->
+  <div class="drawer drawer--menu" id="mobileMenu" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--left">
+      <button class="drawer__close" data-close aria-label="Close menu">×</button>
+      <nav class="drawer-nav">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <hr />
+        <a href="#">Account</a>
+        <a href="#">Search</a>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- Cart drawer -->
+  <div class="drawer drawer--cart" id="cartDrawer" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--right">
+      <div class="drawer__head">
+        <h3>Your Bag <span class="muted">(2)</span></h3>
+        <button class="drawer__close" data-close aria-label="Close cart">×</button>
+      </div>
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=300&q=80" alt="" />
+          <div>
+            <h4>Aera Signet Ring</h4>
+            <p class="muted">Size 6 · Polished</p>
+            <p class="cart-item__price">$185</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&q=80" alt="" />
+          <div>
+            <h4>Lume Pendant</h4>
+            <p class="muted">18&quot; chain</p>
+            <p class="cart-item__price">$220</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+      </div>
+      <div class="drawer__foot">
+        <div class="cart-totals"><span>Subtotal</span><span>$405</span></div>
+        <p class="muted small">Shipping and taxes calculated at checkout.</p>
+        <a href="#" class="btn btn--primary btn--block" data-cursor="hover">Checkout</a>
+        <a href="#" class="link-underline cart-view" data-cursor="hover">View bag</a>
+      </div>
+    </aside>
+  </div>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

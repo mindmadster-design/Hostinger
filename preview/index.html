@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SILIQ — Handcrafted 925 Sterling Silver Jewellery. Heritage craftsmanship, modern silhouettes." />
+  <meta name="theme-color" content="#0F0F10" />
+  <title>SILIQ — 925 Sterling Silver Jewellery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- Prefetch other pages so nav is instant (no flash between pages) -->
+  <link rel="prefetch" href="shop.html" />
+  <link rel="prefetch" href="about.html" />
+  <link rel="prefetch" href="contact.html" />
+</head>
+<body>
+
+  <!-- ============================================================
+       Loader (intro animation)
+  ============================================================ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__brand">
+      <span class="loader__letter">S</span><span class="loader__letter">I</span><span class="loader__letter">L</span><span class="loader__letter">I</span><span class="loader__letter">Q</span>
+    </div>
+    <div class="loader__line"></div>
+    <div class="loader__caption"><span>Maison de Argent</span></div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Announcement bar -->
+  <div class="announcement">
+    <div class="announcement__track">
+      <span>Complimentary Shipping On Orders Over $150</span>
+      <span>·</span>
+      <span>Handcrafted In Limited Editions</span>
+      <span>·</span>
+      <span>Lifetime Repair Service</span>
+      <span>·</span>
+      <span>Complimentary Shipping On Orders Over $150</span>
+      <span>·</span>
+      <span>Handcrafted In Limited Editions</span>
+      <span>·</span>
+      <span>Lifetime Repair Service</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <nav class="nav nav--left">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="#" class="logo" aria-label="SILIQ Home" data-cursor="logo">SILIQ</a>
+
+      <div class="nav nav--right">
+        <button class="icon-btn" aria-label="Search" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <a href="#" class="icon-btn" aria-label="Account" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        </a>
+        <button class="icon-btn cart-trigger" aria-label="Cart" id="cartTrigger" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 7h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">2</span>
+        </button>
+        <button class="icon-btn menu-trigger" id="menuTrigger" aria-label="Menu" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__media">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=2000&q=80" alt="Silver jewelry editorial" data-parallax="0.2" />
+    </div>
+    <div class="hero__content">
+      <p class="eyebrow" data-anim="fade-up">A Quiet Devotion To Craft — Since The First Sketch</p>
+      <h1 class="hero__title" data-anim="words">Silver, <em>refined</em> into heirloom.</h1>
+      <p class="hero__subtitle" data-anim="fade-up">925 sterling silver, slowly handcrafted in limited editions.</p>
+      <div class="hero__cta" data-anim="fade-up">
+        <a href="#shop" class="btn btn--primary" data-cursor="hover" data-magnetic>Discover The Collection</a>
+        <a href="#story" class="btn btn--ghost" data-cursor="hover" data-magnetic>Our Heritage</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- Collections grid -->
+  <section class="section section--collections" id="collections">
+    <div class="section__head">
+      <p class="eyebrow" data-anim="fade-up">The Collections</p>
+      <h2 class="section__title" data-anim="words">Pieces with intention.</h2>
+    </div>
+
+    <div class="collections-grid">
+      <a href="#" class="collection-card reveal" data-cursor="explore">
+        <div class="collection-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&q=80" alt="Rings" />
+        </div>
+        <div class="collection-card__body">
+          <h3>Rings</h3>
+          <span class="link-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="#" class="collection-card reveal" data-cursor="explore">
+        <div class="collection-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=900&q=80" alt="Necklaces" />
+        </div>
+        <div class="collection-card__body">
+          <h3>Necklaces</h3>
+          <span class="link-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="#" class="collection-card reveal" data-cursor="explore">
+        <div class="collection-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=900&q=80" alt="Earrings" />
+        </div>
+        <div class="collection-card__body">
+          <h3>Earrings</h3>
+          <span class="link-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="#" class="collection-card reveal" data-cursor="explore">
+        <div class="collection-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=900&q=80" alt="Bracelets" />
+        </div>
+        <div class="collection-card__body">
+          <h3>Bracelets</h3>
+          <span class="link-arrow">Explore →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Editorial split / brand promise -->
+  <section class="section section--editorial">
+    <div class="editorial">
+      <div class="editorial__media mask-reveal">
+        <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1400&q=80" alt="Silver chain detail" data-parallax="0.15" />
+      </div>
+      <div class="editorial__copy">
+        <p class="eyebrow" data-anim="fade-up">A Standard, Not A Trend</p>
+        <h2 data-anim="words">Solid 925 silver. Hallmarked. Forever.</h2>
+        <p data-anim="fade-up">Every SILIQ piece is cast and finished by hand from solid 925 sterling silver — never plated, never hollowed. Each receives our hallmark, a quiet promise of provenance you can hand to the next generation.</p>
+        <a href="#story" class="link-underline" data-cursor="hover">Read our standards</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BIG BRAND MARQUEE
+  ============================================================ -->
+  <section class="brand-marquee" aria-hidden="true">
+    <div class="brand-marquee__track">
+      <span>SILIQ</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>925 Sterling Silver</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Handcrafted</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Maison de Argent</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <!-- duplicate for seamless loop -->
+      <span>SILIQ</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>925 Sterling Silver</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Handcrafted</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Maison de Argent</em></span>
+      <span class="brand-marquee__dot">●</span>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="section section--featured" id="shop">
+    <div class="section__head section__head--row">
+      <div>
+        <p class="eyebrow" data-anim="fade-up">Featured</p>
+        <h2 class="section__title" data-anim="words">New This Season</h2>
+      </div>
+      <a href="#" class="link-underline" data-cursor="hover">View all</a>
+    </div>
+
+    <div class="products-grid">
+      <a href="product.html" class="product-card reveal" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=900&q=80" alt="Aera Signet Ring" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=900&q=80" alt="Aera Signet Ring detail" />
+          <span class="product-card__tag">New</span>
+        </div>
+        <div class="product-card__body">
+          <h3>Aera Signet Ring</h3>
+          <p class="product-card__meta">925 Sterling Silver</p>
+          <p class="product-card__price">$185</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card reveal" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80" alt="Lume Pendant" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=900&q=80" alt="Lume Pendant detail" />
+        </div>
+        <div class="product-card__body">
+          <h3>Lume Pendant</h3>
+          <p class="product-card__meta">925 Sterling Silver, 18&quot; chain</p>
+          <p class="product-card__price">$220</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card reveal" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=900&q=80" alt="Vesta Hoop Earrings" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=900&q=80" alt="Vesta Hoop Earrings detail" />
+        </div>
+        <div class="product-card__body">
+          <h3>Vesta Hoop Earrings</h3>
+          <p class="product-card__meta">925 Sterling Silver</p>
+          <p class="product-card__price">$140</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card reveal" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=900&q=80" alt="Soliel Cuff" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=900&q=80" alt="Soliel Cuff detail" />
+          <span class="product-card__tag">Limited</span>
+        </div>
+        <div class="product-card__body">
+          <h3>Soliel Cuff</h3>
+          <p class="product-card__meta">925 Sterling Silver, hand-engraved</p>
+          <p class="product-card__price">$310</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Heritage / Story section -->
+  <section class="section section--story" id="story">
+    <div class="story">
+      <div class="story__copy">
+        <p class="eyebrow" data-anim="fade-up">The House Of SILIQ</p>
+        <h2 data-anim="words">A century of silver, <em>quietly perfected.</em></h2>
+        <p data-anim="fade-up">Founded on a single principle — that an object worn close to the body should be made with care that lasts longer than its maker — SILIQ continues a tradition of solid silversmithing in small, considered editions.</p>
+        <p data-anim="fade-up">Each piece is finished entirely by hand, in our atelier, by artisans who sign their work. We do not chase seasons. We refine forms.</p>
+        <a href="#" class="btn btn--ghost btn--dark" data-cursor="hover" data-magnetic>Visit The Atelier</a>
+      </div>
+      <div class="story__media mask-reveal">
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1200&q=80" alt="Artisan at work" data-parallax="0.18" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Lookbook -->
+  <section class="section section--lookbook" id="journal">
+    <div class="section__head section__head--center">
+      <p class="eyebrow" data-anim="fade-up">Lookbook</p>
+      <h2 class="section__title" data-anim="words">Worn, lived, kept.</h2>
+    </div>
+
+    <div class="lookbook">
+      <div class="lookbook__item lookbook__item--tall mask-reveal">
+        <img src="https://images.unsplash.com/photo-1633934542430-0905ec85aa4f?w=1000&q=80" alt="Editorial 1" data-parallax="0.1" />
+      </div>
+      <div class="lookbook__item mask-reveal">
+        <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1000&q=80" alt="Editorial 2" data-parallax="0.1" />
+      </div>
+      <div class="lookbook__item mask-reveal">
+        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1000&q=80" alt="Editorial 3" data-parallax="0.1" />
+      </div>
+      <div class="lookbook__item lookbook__item--tall mask-reveal">
+        <img src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=1000&q=80" alt="Editorial 4" data-parallax="0.1" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Press -->
+  <section class="section section--press">
+    <p class="eyebrow press__eyebrow" data-anim="fade-up">As Featured In</p>
+    <div class="press__row" data-anim="press">
+      <span>VOGUE</span>
+      <span>HARPER&rsquo;S BAZAAR</span>
+      <span>ELLE</span>
+      <span>FINANCIAL TIMES</span>
+      <span>WALLPAPER*</span>
+      <span>T MAGAZINE</span>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section--newsletter">
+    <div class="newsletter">
+      <p class="eyebrow" data-anim="fade-up">Correspondence</p>
+      <h2 data-anim="words">Letters from the atelier.</h2>
+      <p class="newsletter__lede" data-anim="fade-up">First access to new pieces, private events, and quiet stories from the bench.</p>
+      <form class="newsletter__form" data-anim="fade-up" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Thank you ✓';">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit" data-cursor="hover">Subscribe</button>
+      </form>
+      <p class="newsletter__fine">By subscribing you agree to our Privacy Policy.</p>
+    </div>
+  </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="logo logo--sm">SILIQ</span>
+        <p>Handcrafted 925 sterling silver jewellery, made in limited editions.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <a href="shop.html" data-cursor="hover">All Jewellery</a>
+        <a href="shop.html" data-cursor="hover">Rings</a>
+        <a href="shop.html" data-cursor="hover">Necklaces</a>
+        <a href="shop.html" data-cursor="hover">Earrings</a>
+        <a href="bridal.html" data-cursor="hover">Bridal Collection</a>
+      </div>
+      <div class="footer__col">
+        <h4>House</h4>
+        <a href="about.html" data-cursor="hover">About</a>
+        <a href="about.html" data-cursor="hover">Heritage</a>
+        <a href="stores.html" data-cursor="hover">Stores</a>
+        <a href="journal.html" data-cursor="hover">Journal</a>
+        <a href="contact.html" data-cursor="hover">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Care</h4>
+        <a href="contact.html" data-cursor="hover">Customer Service</a>
+        <a href="#" data-cursor="hover">Shipping & Returns</a>
+        <a href="#" data-cursor="hover">Repair Service</a>
+        <a href="#" data-cursor="hover">Sizing Guide</a>
+        <a href="#" data-cursor="hover">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Follow</h4>
+        <a href="#" data-cursor="hover">Instagram</a>
+        <a href="#" data-cursor="hover">Pinterest</a>
+        <a href="#" data-cursor="hover">TikTok</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p>© <span id="year"></span> SILIQ Maison. All rights reserved.</p>
+      <p>925 · Hallmarked · Crafted by hand</p>
+    </div>
+  </footer>
+
+  <!-- Mobile menu -->
+  <div class="drawer drawer--menu" id="mobileMenu" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--left">
+      <button class="drawer__close" data-close aria-label="Close menu">×</button>
+      <nav class="drawer-nav">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <hr />
+        <a href="#">Account</a>
+        <a href="#">Search</a>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- Cart drawer -->
+  <div class="drawer drawer--cart" id="cartDrawer" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--right">
+      <div class="drawer__head">
+        <h3>Your Bag <span class="muted">(2)</span></h3>
+        <button class="drawer__close" data-close aria-label="Close cart">×</button>
+      </div>
+
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=300&q=80" alt="" />
+          <div>
+            <h4>Aera Signet Ring</h4>
+            <p class="muted">Size 6 · Polished</p>
+            <p class="cart-item__price">$185</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&q=80" alt="" />
+          <div>
+            <h4>Lume Pendant</h4>
+            <p class="muted">18&quot; chain</p>
+            <p class="cart-item__price">$220</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+      </div>
+
+      <div class="drawer__foot">
+        <div class="cart-totals">
+          <span>Subtotal</span>
+          <span>$405</span>
+        </div>
+        <p class="muted small">Shipping and taxes calculated at checkout.</p>
+        <a href="#" class="btn btn--primary btn--block" data-cursor="hover">Checkout</a>
+        <a href="#" class="link-underline cart-view" data-cursor="hover">View bag</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Vendors: Lenis (smooth scroll), GSAP (animations), ScrollTrigger, SplitType -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
