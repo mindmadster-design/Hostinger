@@ -957,6 +957,24 @@ em {
 }
 
 /* =============================================================
+   No-anim fallback (shown when vendor scripts fail or reduced motion)
+============================================================= */
+.no-anim .loader,
+.no-anim .page-transition { display: none !important; }
+.no-anim [data-anim] {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+.no-anim .mask-reveal { clip-path: inset(0) !important; }
+.no-anim .reveal { opacity: 1 !important; transform: none !important; }
+.no-anim .word-inner { transform: none !important; }
+.no-anim { cursor: auto !important; }
+.no-anim * { cursor: auto !important; }
+.no-anim input, .no-anim textarea { cursor: text !important; }
+.no-anim .cursor-dot, .no-anim .cursor-ring { display: none !important; }
+
+/* =============================================================
    Reduced motion
 ============================================================= */
 @media (prefers-reduced-motion: reduce) {

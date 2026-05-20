@@ -9,12 +9,28 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
-  // If reduced motion: skip all anims, show everything immediately
-  if (prefersReducedMotion) {
+  /* Helper: show everything immediately and hide loader / overlay */
+  function forceReveal(reason) {
+    if (reason) console.warn('[SILIQ]', reason);
+    document.body.classList.remove('is-locked');
     document.body.classList.add('no-anim', 'is-loaded');
     const loader = document.getElementById('loader');
     if (loader) loader.style.display = 'none';
+    const overlay = document.getElementById('pageTransition');
+    if (overlay) overlay.style.display = 'none';
   }
+
+  // If reduced motion: skip all anims, show everything immediately
+  if (prefersReducedMotion) {
+    forceReveal();
+  }
+
+  // Safety net: if intro hasn't finished within 6s, force reveal
+  setTimeout(() => {
+    if (!document.body.classList.contains('is-loaded')) {
+      forceReveal('Safety timeout — vendor scripts may have failed to load. Falling back to no-animation mode.');
+    }
+  }, 6000);
 
   // Wait for DOM
   document.addEventListener('DOMContentLoaded', init);
@@ -33,9 +49,9 @@
     }
 
     /* Wait for vendor scripts to be available */
-    if (typeof Lenis === 'undefined' || typeof gsap === 'undefined') {
-      console.warn('[SILIQ] Vendor libraries not loaded — running degraded.');
-      document.body.classList.add('no-anim', 'is-loaded');
+    if (typeof Lenis === 'undefined' || typeof gsap === 'undefined' || typeof SplitType === 'undefined') {
+      forceReveal('Vendor libraries not loaded — running degraded.');
+      setupHeaderScrollState(null);
       return;
     }
 
