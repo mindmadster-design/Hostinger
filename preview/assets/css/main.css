@@ -1470,3 +1470,189 @@ em {
   .products-grid--lg { grid-template-columns: 1fr; }
   .atelier-grid { grid-template-columns: 1fr; }
 }
+
+
+
+/* =============================================================
+   CONTACT — Methods grid (4 cards)
+============================================================= */
+.section--contact-methods {
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-bottom: 0;
+}
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.contact-method-card {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 28px 32px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  transition: background var(--t-fast) var(--ease);
+}
+.contact-method-card:last-child { border-right: 0; }
+.contact-method-card:hover { background: var(--ivory); }
+.contact-method-card .eyebrow { margin: 0 0 10px; }
+.contact-method-card h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin: 0 0 12px;
+  color: var(--onyx);
+  letter-spacing: -0.005em;
+}
+.contact-method-card__icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 22px;
+  color: var(--onyx);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-method-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.contact-method-card__meta {
+  font-size: 0.85rem;
+  color: var(--graphite);
+  margin: 0 0 22px;
+  line-height: 1.6;
+  flex: 1;
+}
+.contact-method-card .link-arrow {
+  align-self: flex-start;
+  transition: letter-spacing var(--t-fast) var(--ease);
+}
+.contact-method-card:hover .link-arrow { letter-spacing: 0.28em; }
+
+/* =============================================================
+   CONTACT — Form section (refreshed split layout)
+============================================================= */
+.contact-grid--reverse {
+  grid-template-columns: 1.4fr 1fr;
+}
+.contact-form-wrap__lede {
+  font-size: 1rem;
+  color: var(--graphite);
+  max-width: 56ch;
+  margin: 0 0 36px;
+}
+.contact-form-wrap h2 em { font-style: italic; }
+.contact-form input small {
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--stone);
+  margin-left: 4px;
+}
+
+/* New: contact aside (image + hours) */
+.contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: sticky;
+  top: 110px;
+}
+.contact-aside__media {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+.contact-aside__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contact-aside__hours {
+  background: var(--ivory);
+  padding: 28px 32px;
+}
+.contact-aside__hours .eyebrow { margin-bottom: 16px; }
+.hours-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(229, 225, 216, 0.6);
+  color: var(--graphite);
+}
+.hours-list li:last-child { border-bottom: 0; }
+.hours-list li > span:first-child {
+  font-weight: 400;
+  color: var(--onyx);
+  letter-spacing: 0.04em;
+}
+
+/* =============================================================
+   CONTACT — Bigger map / location section
+============================================================= */
+.section--map {
+  position: relative;
+  height: clamp(420px, 60vw, 620px);
+  overflow: hidden;
+  margin: clamp(60px, 8vw, 100px) 0 0;
+}
+.section--map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.section--map__caption {
+  position: absolute;
+  bottom: clamp(24px, 4vw, 56px);
+  left: clamp(24px, 4vw, 56px);
+  background: var(--bone);
+  padding: 28px 32px;
+  max-width: 360px;
+}
+.section--map__caption .eyebrow { margin-bottom: 12px; }
+.section--map__caption h3 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0 0 12px;
+  color: var(--onyx);
+  line-height: 1.2;
+}
+.section--map__caption p { margin: 0 0 16px; }
+.section--map__caption .link-underline { margin-top: 4px; display: inline-block; }
+
+/* =============================================================
+   Responsive — contact page
+============================================================= */
+@media (max-width: 1024px) {
+  .contact-methods { grid-template-columns: repeat(2, 1fr); }
+  .contact-method-card:nth-child(2) { border-right: 0; }
+  .contact-method-card:nth-child(1),
+  .contact-method-card:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .contact-grid--reverse { grid-template-columns: 1fr; }
+  .contact-aside {
+    position: static;
+    flex-direction: row;
+    gap: 24px;
+  }
+  .contact-aside__media { width: 50%; aspect-ratio: 4 / 5; }
+  .contact-aside__hours { width: 50%; }
+}
+
+@media (max-width: 760px) {
+  .contact-methods { grid-template-columns: 1fr; }
+  .contact-method-card { border-right: 0; border-bottom: 1px solid var(--line); }
+  .contact-method-card:last-child { border-bottom: 0; }
+  .contact-aside { flex-direction: column; }
+  .contact-aside__media, .contact-aside__hours { width: 100%; }
+  .section--map__caption { left: 16px; bottom: 16px; padding: 20px 24px; max-width: 280px; }
+  .section--map__caption h3 { font-size: 1.3rem; }
+}
