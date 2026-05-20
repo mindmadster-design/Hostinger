@@ -325,19 +325,16 @@
     const overlay = document.getElementById('pageTransition');
     if (!overlay) return;
 
-    // Has the user already seen the loader this session?
-    let hasVisited = false;
-    try { hasVisited = sessionStorage.getItem('siliq_visited') === '1'; } catch (e) { /* ignore */ }
+    // If no loader on this page, the page-transition overlay reveals quickly.
+    // If the loader IS present, wait for the loader exit before revealing.
+    const hasLoader = !!document.getElementById('loader');
 
-    // Reveal-in on load: overlay slides up to uncover the page
-    // - First visit: delayed to align with loader exit
-    // - Subsequent navs: quick slide-up immediately
     gsap.set(overlay, { yPercent: 0 });
     gsap.to(overlay, {
       yPercent: -100,
-      duration: hasVisited ? 0.8 : 1.0,
+      duration: hasLoader ? 1.0 : 0.8,
       ease: 'expo.inOut',
-      delay: hasVisited ? 0.05 : 2.4,
+      delay: hasLoader ? 2.4 : 0.05,
       onComplete: () => gsap.set(overlay, { yPercent: 100 }),
     });
 
@@ -376,9 +373,9 @@
 
   /* =============================================================
      12) Loader → Hero intro sequence
-        — On subsequent pages within the same session, skip the loader
-          and just play the page-transition reveal. The loader is only
-          for the first impression.
+        — Only runs the loader when a .loader element exists in the DOM.
+          Inner pages (Shop, About, Contact) don't include the loader,
+          so this falls through to a quick hero/page reveal.
   ============================================================= */
   function runIntroSequence() {
     const body = document.body;
@@ -393,14 +390,8 @@
     body.classList.add('is-locked');
     if (window._lenis) window._lenis.stop();
 
-    // Has the user already seen the loader this session?
-    let hasVisited = false;
-    try { hasVisited = sessionStorage.getItem('siliq_visited') === '1'; } catch (e) { /* ignore */ }
-
-    // ----- Path A: subsequent page nav — skip loader, just reveal -----
-    if (hasVisited) {
-      if (loader) loader.style.display = 'none';
-
+    // ----- Path A: No loader on this page — quick reveal -----
+    if (!loader) {
       // Pre-set hero state if there is one
       if (heroEyebrow) gsap.set(heroEyebrow, { y: 24, opacity: 0, visibility: 'visible' });
       if (heroSubtitle) gsap.set(heroSubtitle, { y: 24, opacity: 0, visibility: 'visible' });
@@ -432,7 +423,7 @@
       tl.to(heroCtaButtons, { y: 0, opacity: 1, duration: 0.5, stagger: 0.07 }, '-=0.4');
       if (heroScroll) tl.from(heroScroll, { opacity: 0, duration: 0.5 }, '-=0.2');
 
-      // For inner pages without a hero, just unlock quickly
+      // Inner pages without a hero: unlock immediately
       if (!heroImg && !heroTitle) {
         body.classList.remove('is-locked');
         body.classList.add('is-loaded');
@@ -442,7 +433,7 @@
       return;
     }
 
-    // ----- Path B: first visit — full loader sequence -----
+    // ----- Path B: Loader present (home page) — full intro sequence -----
 
     // Pre-set LOADER state (must use gsap.set so GSAP tracks yPercent properly,
     // otherwise CSS-set translateY(110%) is invisible to GSAP's animation engine)
@@ -464,7 +455,6 @@
         if (window._lenis) window._lenis.start();
         if (loader) loader.style.display = 'none';
         ScrollTrigger.refresh();
-        try { sessionStorage.setItem('siliq_visited', '1'); } catch (e) { /* ignore */ }
       },
     });
 
@@ -487,10 +477,6 @@
     if (heroSubtitle) tl.to(heroSubtitle, { y: 0, opacity: 1, duration: 0.7 }, '-=0.5');
     tl.to(heroCtaButtons, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08 }, '-=0.4');
     if (heroScroll) tl.from(heroScroll, { opacity: 0, duration: 0.6 }, '-=0.2');
-
-    // Inner pages on first visit: also mark as visited once loader finishes,
-    // so future navigations skip the loader.
-    // (Already handled in onComplete above.)
   }
 
   /* =============================================================

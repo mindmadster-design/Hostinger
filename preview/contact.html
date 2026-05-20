@@ -13,16 +13,7 @@
 
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body class="is-loading">
-
-  <!-- Loader -->
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__brand">
-      <span class="loader__letter">S</span><span class="loader__letter">I</span><span class="loader__letter">L</span><span class="loader__letter">I</span><span class="loader__letter">Q</span>
-    </div>
-    <div class="loader__line"></div>
-    <div class="loader__caption"><span>Maison de Argent</span></div>
-  </div>
+<body>
 
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
@@ -72,19 +63,81 @@
 
   <main>
 
-  <!-- Page header (compact, no hero image) -->
-  <section class="page-header">
-    <p class="eyebrow" data-anim="fade-up">Correspondence</p>
-    <h1 data-anim="words">Get in touch.</h1>
-    <p class="page-header__lede" data-anim="fade-up">Whether you are considering a piece, planning a commission, or visiting the atelier — we&rsquo;d love to hear from you.</p>
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__media">
+      <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=2000&q=80" alt="SILIQ Atelier" data-parallax="0.18" />
+    </div>
+    <div class="page-hero__content">
+      <p class="page-hero__crumb" data-anim="fade-up">Home / Contact</p>
+      <h1 data-anim="words">Get in <em>touch.</em></h1>
+      <p class="page-hero__lede" data-anim="fade-up">Whether you are considering a piece, planning a commission, or visiting the atelier — we&rsquo;d love to hear from you.</p>
+    </div>
   </section>
 
-  <!-- Contact split: form + info -->
-  <section class="section section--contact">
-    <div class="contact-grid">
+  <!-- Contact methods grid -->
+  <section class="section section--contact-methods">
+    <div class="contact-methods">
+      <a href="#contact-form" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <rect x="4" y="8" width="24" height="16" />
+            <path d="M4 10l12 9 12-9" />
+          </svg>
+        </div>
+        <p class="eyebrow">Write</p>
+        <h3>hello@siliq.com</h3>
+        <p class="contact-method-card__meta">For general enquiries — we reply within 24h.</p>
+        <span class="link-arrow">Send a note →</span>
+      </a>
+
+      <a href="tel:+33000000000" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M22 19v3a3 3 0 0 1-3 3 18 18 0 0 1-15-15 3 3 0 0 1 3-3h3a1 1 0 0 1 1 0.7l1.5 4.5-2.5 2.5a14 14 0 0 0 6 6l2.5-2.5 4.5 1.5a1 1 0 0 1 0.7 1z"/>
+          </svg>
+        </div>
+        <p class="eyebrow">Call</p>
+        <h3>+33 0 00 00 00</h3>
+        <p class="contact-method-card__meta">Tuesday — Saturday, 10.00 — 18.00 CET.</p>
+        <span class="link-arrow">Speak with us →</span>
+      </a>
+
+      <a href="#map" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M16 4a8 8 0 0 1 8 8c0 6-8 16-8 16S8 18 8 12a8 8 0 0 1 8-8z" />
+            <circle cx="16" cy="12" r="3" />
+          </svg>
+        </div>
+        <p class="eyebrow">Visit</p>
+        <h3>14 Rue de l&rsquo;Argent</h3>
+        <p class="contact-method-card__meta">75001 Paris, France · By appointment.</p>
+        <span class="link-arrow">View location →</span>
+      </a>
+
+      <a href="mailto:press@siliq.com" class="contact-method-card reveal" data-cursor="hover">
+        <div class="contact-method-card__icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="0.8">
+            <path d="M6 6h12l8 8v12H6z" />
+            <path d="M18 6v8h8" />
+          </svg>
+        </div>
+        <p class="eyebrow">Press &amp; Wholesale</p>
+        <h3>press@siliq.com</h3>
+        <p class="contact-method-card__meta">Editorial requests, samples, B2B partnerships.</p>
+        <span class="link-arrow">Get in touch →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact form section: form + atelier image -->
+  <section class="section section--contact" id="contact-form">
+    <div class="contact-grid contact-grid--reverse">
       <div class="contact-form-wrap">
         <p class="eyebrow" data-anim="fade-up">Send a Message</p>
-        <h2 data-anim="words">Tell us a little about your enquiry.</h2>
+        <h2 data-anim="words">Tell us a little about <em>your enquiry.</em></h2>
+        <p data-anim="fade-up" class="contact-form-wrap__lede">Use the form below for anything — we read every message, and reply by hand.</p>
         <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Sent ✓ — thank you'; this.querySelector('button').disabled = true;">
           <div class="contact-form__row">
             <label>
@@ -96,10 +149,16 @@
               <input type="text" required />
             </label>
           </div>
-          <label>
-            <span>Email</span>
-            <input type="email" required />
-          </label>
+          <div class="contact-form__row">
+            <label>
+              <span>Email</span>
+              <input type="email" required />
+            </label>
+            <label>
+              <span>Phone <small>(optional)</small></span>
+              <input type="tel" />
+            </label>
+          </div>
           <label>
             <span>Subject</span>
             <select>
@@ -113,42 +172,62 @@
           </label>
           <label>
             <span>Message</span>
-            <textarea rows="6" required></textarea>
+            <textarea rows="6" required placeholder="Tell us what you have in mind..."></textarea>
           </label>
           <button type="submit" class="btn btn--primary" data-cursor="hover" data-magnetic>Send Message</button>
         </form>
       </div>
 
-      <aside class="contact-info">
-        <div class="contact-info__block">
-          <p class="eyebrow">Atelier</p>
-          <p>14 Rue de l&rsquo;Argent<br />75001 Paris<br />France</p>
+      <div class="contact-aside">
+        <div class="contact-aside__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1400&q=80" alt="SILIQ atelier interior" data-parallax="0.15" />
         </div>
-        <div class="contact-info__block">
-          <p class="eyebrow">Hours</p>
-          <p>Tuesday — Saturday<br />10.00 — 18.00<br /><span class="muted">By appointment on Sundays</span></p>
+        <div class="contact-aside__hours">
+          <p class="eyebrow">Atelier Hours</p>
+          <ul class="hours-list">
+            <li><span>Monday</span><span class="muted">Closed</span></li>
+            <li><span>Tuesday</span><span>10.00 — 18.00</span></li>
+            <li><span>Wednesday</span><span>10.00 — 18.00</span></li>
+            <li><span>Thursday</span><span>10.00 — 18.00</span></li>
+            <li><span>Friday</span><span>10.00 — 18.00</span></li>
+            <li><span>Saturday</span><span>10.00 — 18.00</span></li>
+            <li><span>Sunday</span><span class="muted">By appointment</span></li>
+          </ul>
         </div>
-        <div class="contact-info__block">
-          <p class="eyebrow">Direct</p>
-          <p>
-            <a href="mailto:hello@siliq.com" class="link-underline" data-cursor="hover">hello@siliq.com</a><br /><br />
-            <a href="tel:+33000000000" class="link-underline" data-cursor="hover">+33 0 00 00 00 00</a>
-          </p>
-        </div>
-        <div class="contact-info__block">
-          <p class="eyebrow">Press &amp; Wholesale</p>
-          <p><a href="mailto:press@siliq.com" class="link-underline" data-cursor="hover">press@siliq.com</a></p>
-        </div>
-      </aside>
+      </div>
     </div>
   </section>
 
-  <!-- Map / atelier image -->
-  <section class="section--map mask-reveal">
+  <!-- Map / atelier exterior -->
+  <section class="section--map mask-reveal" id="map">
     <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?w=2000&q=80" alt="Atelier exterior" data-parallax="0.12" />
     <div class="section--map__caption">
-      <p class="eyebrow">Visit</p>
-      <p>14 Rue de l&rsquo;Argent, Paris</p>
+      <p class="eyebrow">Visit The Atelier</p>
+      <h3>14 Rue de l&rsquo;Argent<br />75001 Paris</h3>
+      <p class="muted small">By appointment, Tuesday — Saturday.</p>
+      <a href="#contact-form" class="link-underline" data-cursor="hover">Book a visit</a>
+    </div>
+  </section>
+
+  <!-- Brand marquee strip -->
+  <section class="brand-marquee" aria-hidden="true">
+    <div class="brand-marquee__track">
+      <span>SILIQ</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Maison de Argent</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Paris</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Visit · Write · Commission</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>SILIQ</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Maison de Argent</em></span>
+      <span class="brand-marquee__dot">●</span>
+      <span>Paris</span>
+      <span class="brand-marquee__dot">●</span>
+      <span><em>Visit · Write · Commission</em></span>
+      <span class="brand-marquee__dot">●</span>
     </div>
   </section>
 
@@ -159,25 +238,29 @@
       <h2 class="section__title" data-anim="words">A few quiet answers.</h2>
     </div>
     <div class="faq">
-      <details class="faq__item">
+      <details class="faq__item" open>
         <summary>How long does a custom commission take?</summary>
-        <p>Bespoke pieces typically take 6–10 weeks. We&rsquo;ll share sketches, then a wax model for approval before casting.</p>
+        <p>Bespoke pieces typically take 6–10 weeks. We&rsquo;ll share sketches, then a wax model for approval before casting. Larger or more intricate pieces may take longer — we will always be transparent about timing.</p>
       </details>
       <details class="faq__item">
         <summary>Do you offer engraving?</summary>
-        <p>Yes — every piece can be engraved by hand. Add a note at checkout, or write to us for monogram options.</p>
+        <p>Yes — every piece can be engraved by hand. Add a note at checkout, or write to us for monogram options. Engraving is complimentary on most pieces.</p>
       </details>
       <details class="faq__item">
         <summary>What is your repair policy?</summary>
-        <p>Each SILIQ piece comes with lifetime polishing and minor repair, complimentary. Just send us a note.</p>
+        <p>Each SILIQ piece comes with lifetime polishing and minor repair, complimentary. For more substantial repairs, we provide a fair quote — repair before replacement, always.</p>
       </details>
       <details class="faq__item">
         <summary>Do you ship internationally?</summary>
-        <p>Yes — we ship worldwide via insured express courier. Orders above $150 ship complimentary.</p>
+        <p>Yes — we ship worldwide via insured express courier. Orders above $150 ship complimentary. International orders may incur customs duties depending on the destination.</p>
       </details>
       <details class="faq__item">
         <summary>Can I visit the atelier?</summary>
-        <p>By appointment, with pleasure. Email us at <a href="mailto:hello@siliq.com">hello@siliq.com</a> to arrange a visit.</p>
+        <p>By appointment, with pleasure. Email us at <a href="mailto:hello@siliq.com">hello@siliq.com</a> to arrange a visit. We are happy to receive private appointments outside of regular hours by arrangement.</p>
+      </details>
+      <details class="faq__item">
+        <summary>What is your return policy?</summary>
+        <p>Standard pieces may be returned within 14 days for a full refund or exchange, provided they are unworn and in original condition. Bespoke and engraved pieces are final sale.</p>
       </details>
     </div>
   </section>
