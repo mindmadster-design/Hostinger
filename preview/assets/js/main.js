@@ -72,8 +72,12 @@
     /* 3, 4, 7. Scroll-driven anims (text reveal, mask reveal, parallax, fades) */
     setupScrollAnimations();
 
-    /* 11. Page transition (between pages) */
-    setupPageTransitions();
+    /* 11. Page transition — DISABLED.
+       Letting it run was creating a second black slide-up over the loader
+       and a flash on every page nav. Just hide the overlay element so
+       clicking a link results in a normal, fast browser navigation. */
+    const __pt = document.getElementById('pageTransition');
+    if (__pt) __pt.style.display = 'none';
 
     /* Shop filtering (only runs if shop grid present) */
     setupShopFilter();
