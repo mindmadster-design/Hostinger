@@ -82,6 +82,13 @@
     /* Shop filtering (only runs if shop grid present) */
     setupShopFilter();
 
+    /* Product page: tabs + gallery */
+    setupProductTabs();
+    setupProductGallery();
+
+    /* Journal page: category tabs (visual only) */
+    setupJournalTabs();
+
     /* 12. Loader → hero intro (or skip if already visited this session) */
     runIntroSequence();
   }
@@ -513,6 +520,81 @@
 
         // Refresh ScrollTrigger because the layout changed
         if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      });
+    });
+  }
+
+  /* =============================================================
+     Product page: Tab switching (Description / Material / Shipping)
+  ============================================================= */
+  function setupProductTabs() {
+    const tabsEl = document.getElementById('productTabs');
+    if (!tabsEl) return;
+    const tabs = tabsEl.querySelectorAll('.tab[data-tab]');
+    const panels = tabsEl.querySelectorAll('.tab-panel[data-panel]');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.dataset.tab;
+        tabs.forEach((t) => t.classList.toggle('is-active', t === tab));
+        panels.forEach((p) => p.classList.toggle('is-active', p.dataset.panel === id));
+      });
+    });
+  }
+
+  /* =============================================================
+     Product page: Gallery thumbnail switching
+  ============================================================= */
+  function setupProductGallery() {
+    const thumbs = document.querySelectorAll('.product-gallery .thumb[data-img]');
+    const main = document.getElementById('mainProductImg');
+    if (!thumbs.length || !main) return;
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        thumbs.forEach((t) => t.classList.toggle('is-active', t === thumb));
+        // Fade out, swap, fade in
+        main.style.opacity = '0';
+        setTimeout(() => {
+          main.src = thumb.dataset.img;
+          main.style.opacity = '1';
+        }, 200);
+      });
+    });
+
+    /* Size & finish selectors — visual only (toggle is-active) */
+    document.querySelectorAll('.size-options').forEach((group) => {
+      const opts = group.querySelectorAll('.size-option:not(.is-disabled)');
+      opts.forEach((o) => o.addEventListener('click', () => {
+        opts.forEach((x) => x.classList.toggle('is-active', x === o));
+      }));
+    });
+    document.querySelectorAll('.finish-options').forEach((group) => {
+      const opts = group.querySelectorAll('.finish-option');
+      opts.forEach((o) => o.addEventListener('click', () => {
+        opts.forEach((x) => x.classList.toggle('is-active', x === o));
+      }));
+    });
+
+    /* Quantity buttons */
+    document.querySelectorAll('.qty').forEach((qty) => {
+      const valEl = qty.querySelector('.qty__value');
+      const [minus, plus] = qty.querySelectorAll('.qty__btn');
+      let n = parseInt(valEl.textContent, 10) || 1;
+      const set = (v) => { n = Math.max(1, Math.min(99, v)); valEl.textContent = n; };
+      minus.addEventListener('click', () => set(n - 1));
+      plus.addEventListener('click', () => set(n + 1));
+    });
+  }
+
+  /* =============================================================
+     Journal page: Category tabs (visual only — filtering would
+     come with real CMS data)
+  ============================================================= */
+  function setupJournalTabs() {
+    const tabs = document.querySelectorAll('.journal-tab');
+    if (!tabs.length) return;
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.toggle('is-active', t === tab));
       });
     });
   }
