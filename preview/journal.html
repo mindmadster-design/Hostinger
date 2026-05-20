@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The House of SILIQ — a century of silver, quietly perfected. Heritage, craft and provenance behind every 925 sterling silver piece." />
+  <meta name="description" content="The SILIQ Journal — quiet stories from the atelier. Craft, heritage, styling, and the small moments that make a piece." />
   <meta name="theme-color" content="#0F0F10" />
-  <title>About — SILIQ</title>
+  <title>Journal — SILIQ</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,46 +14,35 @@
 
   <link rel="stylesheet" href="assets/css/main.css" />
 
-  <!-- Prefetch other pages so nav is instant (no flash between pages) -->
-  <link rel="prefetch" href="index.html" />
+  <link rel="prefetch" href="about.html" />
   <link rel="prefetch" href="shop.html" />
-  <link rel="prefetch" href="contact.html" />
 </head>
 <body>
 
-  <!-- Custom cursor -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Announcement bar -->
   <div class="announcement">
     <div class="announcement__track">
-      <span>Complimentary Shipping On Orders Over $150</span>
+      <span>Stories From The Atelier</span>
       <span>·</span>
-      <span>Handcrafted In Limited Editions</span>
+      <span>Craft, Heritage &amp; Quiet Style</span>
       <span>·</span>
-      <span>Lifetime Repair Service</span>
+      <span>Stories From The Atelier</span>
       <span>·</span>
-      <span>Complimentary Shipping On Orders Over $150</span>
-      <span>·</span>
-      <span>Handcrafted In Limited Editions</span>
-      <span>·</span>
-      <span>Lifetime Repair Service</span>
+      <span>Craft, Heritage &amp; Quiet Style</span>
     </div>
   </div>
 
-  <!-- Header -->
   <header class="header" id="header">
     <div class="header__inner">
       <nav class="nav nav--left">
         <a href="shop.html">Shop</a>
         <a href="bridal.html">Bridal</a>
-        <a href="about.html" class="is-active">About</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
-
       <a href="index.html" class="logo" aria-label="SILIQ Home" data-cursor="logo">SILIQ</a>
-
       <div class="nav nav--right">
         <button class="icon-btn" aria-label="Search" data-cursor="hover">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -74,136 +63,167 @@
 
   <main>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="page-hero__media">
-      <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=2000&q=80" alt="Atelier" data-parallax="0.18" />
-    </div>
-    <div class="page-hero__content">
-      <p class="page-hero__crumb" data-anim="fade-up">Home / About</p>
-      <h1 data-anim="words">Maison de Argent.</h1>
-      <p class="page-hero__lede" data-anim="fade-up">A century of silver, <em>quietly perfected.</em></p>
+  <!-- Page header -->
+  <section class="page-header">
+    <p class="eyebrow" data-anim="fade-up">Home / Journal</p>
+    <h1 data-anim="words">Letters from the bench.</h1>
+    <p class="page-header__lede" data-anim="fade-up">Quiet stories from our atelier — craft, heritage, styling, and the small moments that make a piece.</p>
+  </section>
+
+  <!-- Category tabs -->
+  <section class="journal-tabs">
+    <div class="journal-tabs__inner">
+      <button class="journal-tab is-active" data-cursor="hover">All</button>
+      <button class="journal-tab" data-cursor="hover">Craft</button>
+      <button class="journal-tab" data-cursor="hover">Heritage</button>
+      <button class="journal-tab" data-cursor="hover">Styling</button>
+      <button class="journal-tab" data-cursor="hover">Bridal</button>
     </div>
   </section>
 
-  <!-- Story 1 -->
-  <section class="section section--editorial">
-    <div class="editorial">
-      <div class="editorial__copy">
-        <p class="eyebrow" data-anim="fade-up">Our Origin</p>
-        <h2 data-anim="words">A workshop, a hammer, a bench.</h2>
-        <p data-anim="fade-up">SILIQ was founded on a single principle — that an object worn close to the body should be made with care that lasts longer than its maker.</p>
-        <p data-anim="fade-up">For five generations, the same hands have shaped the same silver in the same atelier, refining a vocabulary of forms that resist trend, season, and time.</p>
+  <!-- Featured (large) post -->
+  <section class="section section--journal-featured">
+    <a href="#" class="journal-featured" data-cursor="view">
+      <div class="journal-featured__media mask-reveal">
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=2000&q=80" alt="Featured story" data-parallax="0.12" />
       </div>
-      <div class="editorial__media mask-reveal">
-        <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1400&q=80" alt="Silver close-up" data-parallax="0.15" />
+      <div class="journal-featured__copy">
+        <p class="eyebrow">Craft · Featured</p>
+        <h2 data-anim="words">A morning at the bench.</h2>
+        <p>An eight-minute portrait of how a single ring travels from sketch to hallmark, in the hands of three makers — over the course of a single, slow morning.</p>
+        <div class="journal-featured__meta">
+          <span class="muted small">May 2026</span>
+          <span class="muted small">·</span>
+          <span class="muted small">8 min read</span>
+        </div>
+        <span class="link-underline">Read the story</span>
       </div>
+    </a>
+  </section>
+
+  <!-- Articles grid -->
+  <section class="section section--journal-grid">
+    <div class="journal-grid">
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Craft</p>
+          <h3>The patina of solid silver, and why we welcome it.</h3>
+          <p class="journal-card__meta"><span class="muted small">April 2026</span> · <span class="muted small">5 min</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Heritage</p>
+          <h3>Five generations, one workshop, three small drawers.</h3>
+          <p class="journal-card__meta"><span class="muted small">April 2026</span> · <span class="muted small">7 min</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1633934542430-0905ec85aa4f?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Styling</p>
+          <h3>Wearing silver in the daytime — three quiet rules.</h3>
+          <p class="journal-card__meta"><span class="muted small">March 2026</span> · <span class="muted small">4 min</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Bridal</p>
+          <h3>Why we ask brides to choose a band before the dress.</h3>
+          <p class="journal-card__meta"><span class="muted small">March 2026</span> · <span class="muted small">6 min</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Craft</p>
+          <h3>Lost-wax casting, in plain language.</h3>
+          <p class="journal-card__meta"><span class="muted small">February 2026</span> · <span class="muted small">9 min</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Heritage</p>
+          <h3>The hallmark, explained — what those tiny stamps mean.</h3>
+          <p class="journal-card__meta"><span class="muted small">February 2026</span> · <span class="muted small">5 min</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Styling</p>
+          <h3>How to stack rings without trying.</h3>
+          <p class="journal-card__meta"><span class="muted small">January 2026</span> · <span class="muted small">3 min</span></p>
+        </div>
+      </a>
+
+      <a href="#" class="journal-card reveal" data-cursor="view">
+        <div class="journal-card__media mask-reveal">
+          <img src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=900&q=80" alt="" />
+        </div>
+        <div class="journal-card__body">
+          <p class="eyebrow">Craft</p>
+          <h3>The weight of a piece, and why we measure it.</h3>
+          <p class="journal-card__meta"><span class="muted small">January 2026</span> · <span class="muted small">5 min</span></p>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="shop-pagination" data-anim="fade-up">
+      <button class="shop-pagination__btn" disabled aria-label="Previous">←</button>
+      <span class="shop-pagination__num is-active">01</span>
+      <span class="shop-pagination__num">02</span>
+      <span class="shop-pagination__num">03</span>
+      <span class="shop-pagination__num">04</span>
+      <button class="shop-pagination__btn" data-cursor="hover" aria-label="Next">→</button>
     </div>
   </section>
 
-  <!-- Values -->
-  <section class="section section--values">
-    <div class="section__head section__head--center">
-      <p class="eyebrow" data-anim="fade-up">Our Standards</p>
-      <h2 class="section__title" data-anim="words">A practice, not a trend.</h2>
-    </div>
-
-    <div class="values-grid">
-      <div class="value-card reveal">
-        <span class="value-num">01</span>
-        <h3>Craft</h3>
-        <p>Every piece is cast, finished and polished entirely by hand. We measure progress in millimeters and decades, not in seasons.</p>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-num">02</span>
-        <h3>Heritage</h3>
-        <p>Five generations of silversmithing, kept alive by apprentices who train for seven years before they are permitted to sign their work.</p>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-num">03</span>
-        <h3>Provenance</h3>
-        <p>Solid 925 sterling silver. Hallmarked. Recyclable. Traceable from raw bar to finished hallmark.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Big brand marquee -->
+  <!-- Brand marquee -->
   <section class="brand-marquee" aria-hidden="true">
     <div class="brand-marquee__track">
-      <span>SILIQ</span>
+      <span>The Journal</span>
       <span class="brand-marquee__dot">●</span>
-      <span><em>925 Sterling Silver</em></span>
+      <span><em>Stories From The Bench</em></span>
       <span class="brand-marquee__dot">●</span>
-      <span>Hallmarked</span>
+      <span>Craft</span>
       <span class="brand-marquee__dot">●</span>
-      <span><em>Maison de Argent</em></span>
+      <span><em>Heritage</em></span>
       <span class="brand-marquee__dot">●</span>
-      <span>SILIQ</span>
+      <span>Styling</span>
       <span class="brand-marquee__dot">●</span>
-      <span><em>925 Sterling Silver</em></span>
+      <span><em>Bridal</em></span>
       <span class="brand-marquee__dot">●</span>
-      <span>Hallmarked</span>
+      <span>The Journal</span>
       <span class="brand-marquee__dot">●</span>
-      <span><em>Maison de Argent</em></span>
+      <span><em>Stories From The Bench</em></span>
       <span class="brand-marquee__dot">●</span>
-    </div>
-  </section>
-
-  <!-- Atelier gallery -->
-  <section class="section section--atelier">
-    <div class="section__head section__head--center">
-      <p class="eyebrow" data-anim="fade-up">The Atelier</p>
-      <h2 class="section__title" data-anim="words">Where things take time.</h2>
-    </div>
-
-    <div class="atelier-grid">
-      <div class="atelier-grid__item atelier-grid__item--tall mask-reveal">
-        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1200&q=80" alt="Silversmith at work" data-parallax="0.12" />
-      </div>
-      <div class="atelier-grid__item mask-reveal">
-        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1000&q=80" alt="Silver detail" data-parallax="0.12" />
-      </div>
-      <div class="atelier-grid__item mask-reveal">
-        <img src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=1000&q=80" alt="Editorial" data-parallax="0.12" />
-      </div>
-      <div class="atelier-grid__item atelier-grid__item--tall mask-reveal">
-        <img src="https://images.unsplash.com/photo-1633934542430-0905ec85aa4f?w=1200&q=80" alt="Hand polishing" data-parallax="0.12" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Founder quote -->
-  <section class="section section--quote">
-    <blockquote data-anim="words">"We do not chase seasons. We refine forms. The right shape, made well, never goes out of style."</blockquote>
-    <cite data-anim="fade-up">— SILIQ Atelier, Est. founding</cite>
-  </section>
-
-  <!-- Story 2 — heritage -->
-  <section class="section section--story">
-    <div class="story">
-      <div class="story__media mask-reveal">
-        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1200&q=80" alt="Heritage piece" data-parallax="0.15" />
-      </div>
-      <div class="story__copy">
-        <p class="eyebrow" data-anim="fade-up">Lineage</p>
-        <h2 data-anim="words">Inherited, not invented.</h2>
-        <p data-anim="fade-up">Each piece carries forward a small library of techniques — granulation, hand-engraving, lost-wax casting — passed from master to apprentice across generations.</p>
-        <p data-anim="fade-up">We make small editions on purpose. The number we sign is the number we can stand behind.</p>
-        <a href="shop.html" class="btn btn--ghost btn--dark" data-cursor="hover">Discover the Collection</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Press -->
-  <section class="section section--press">
-    <p class="eyebrow press__eyebrow" data-anim="fade-up">As Featured In</p>
-    <div class="press__row" data-anim="press">
-      <span>VOGUE</span>
-      <span>HARPER&rsquo;S BAZAAR</span>
-      <span>ELLE</span>
-      <span>FINANCIAL TIMES</span>
-      <span>WALLPAPER*</span>
-      <span>T MAGAZINE</span>
     </div>
   </section>
 
@@ -223,7 +243,6 @@
 
   </main>
 
-  <!-- Footer (shared) -->
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__brand">
@@ -249,7 +268,7 @@
       <div class="footer__col">
         <h4>Care</h4>
         <a href="contact.html" data-cursor="hover">Customer Service</a>
-        <a href="#" data-cursor="hover">Shipping & Returns</a>
+        <a href="#" data-cursor="hover">Shipping &amp; Returns</a>
         <a href="#" data-cursor="hover">Repair Service</a>
         <a href="#" data-cursor="hover">Sizing Guide</a>
         <a href="#" data-cursor="hover">FAQ</a>
@@ -267,7 +286,6 @@
     </div>
   </footer>
 
-  <!-- Mobile menu -->
   <div class="drawer drawer--menu" id="mobileMenu" aria-hidden="true" data-lenis-prevent>
     <div class="drawer__overlay" data-close></div>
     <aside class="drawer__panel drawer__panel--left">
@@ -279,14 +297,10 @@
         <a href="stores.html">Stores</a>
         <a href="journal.html">Journal</a>
         <a href="contact.html">Contact</a>
-        <hr />
-        <a href="#">Account</a>
-        <a href="#">Search</a>
       </nav>
     </aside>
   </div>
 
-  <!-- Cart drawer -->
   <div class="drawer drawer--cart" id="cartDrawer" aria-hidden="true" data-lenis-prevent>
     <div class="drawer__overlay" data-close></div>
     <aside class="drawer__panel drawer__panel--right">
