@@ -377,6 +377,12 @@
     body.classList.add('is-locked');
     if (window._lenis) window._lenis.stop();
 
+    // Pre-set LOADER state (must use gsap.set so GSAP tracks yPercent properly,
+    // otherwise CSS-set translateY(110%) is invisible to GSAP's animation engine)
+    gsap.set('.loader__letter', { yPercent: 110, y: 0 });
+    gsap.set('.loader__caption span', { yPercent: 110, y: 0 });
+    gsap.set('.loader__line', { width: 0 });
+
     // Pre-set hero state (already set by data-anim setups above; reaffirm)
     if (heroEyebrow) gsap.set(heroEyebrow, { y: 24, opacity: 0, visibility: 'visible' });
     if (heroSubtitle) gsap.set(heroSubtitle, { y: 24, opacity: 0, visibility: 'visible' });
