@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SILIQ — Checkout" />
+  <meta name="theme-color" content="#0F0F10" />
+  <title>Checkout — SILIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <style>
+    .checkout-page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(40px, 6vw, 80px) var(--pad-x) clamp(60px, 8vw, 100px);
+    }
+    .checkout-page__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .checkout-page__header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0;
+    }
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: start;
+    }
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .checkout-section {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .checkout-section:first-child { padding-top: 0; }
+    .checkout-section:last-child { border-bottom: 0; }
+    .checkout-section__title {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin: 0 0 22px;
+    }
+    .checkout-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .checkout-fields__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .checkout-fields__row--3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .checkout-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .checkout-field label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone);
+      font-weight: 500;
+    }
+    .checkout-field input,
+    .checkout-field select {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--onyx);
+      font-weight: 300;
+      transition: border-color var(--t-fast) var(--ease);
+    }
+    .checkout-field input:focus,
+    .checkout-field select:focus {
+      outline: none;
+      border-bottom-color: var(--onyx);
+    }
+    .checkout-field input::placeholder { color: var(--silver); }
+    .checkout-field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23888782' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      cursor: pointer;
+      padding-right: 24px;
+    }
+    .shipping-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .shipping-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+    }
+    .shipping-option:hover { border-color: var(--onyx); }
+    .shipping-option.is-selected {
+      border-color: var(--onyx);
+      background: var(--ivory);
+    }
+    .shipping-option input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--stone);
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .shipping-option input[type="radio"]:checked {
+      border-color: var(--onyx);
+    }
+    .shipping-option input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      background: var(--onyx);
+      border-radius: 50%;
+    }
+    .shipping-option__details {
+      flex: 1;
+    }
+    .shipping-option__name {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--onyx);
+      margin: 0 0 2px;
+    }
+    .shipping-option__desc {
+      font-size: 0.8rem;
+      color: var(--stone);
+      margin: 0;
+    }
+    .shipping-option__price {
+      font-size: 0.92rem;
+      color: var(--onyx);
+      font-weight: 400;
+    }
+    /* Order summary sidebar */
+    .checkout-summary {
+      background: var(--ivory);
+      padding: 36px 32px;
+      position: sticky;
+      top: 110px;
+    }
+    .checkout-summary h3 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin: 0 0 24px;
+    }
+    .checkout-summary-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+    }
+    .checkout-summary-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+    .checkout-summary-item__img {
+      width: 56px; height: 70px;
+      background: var(--bone);
+      overflow: hidden;
+    }
+    .checkout-summary-item__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .checkout-summary-item__name {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      margin: 0 0 2px;
+      color: var(--onyx);
+    }
+    .checkout-summary-item__variant {
+      font-size: 0.75rem;
+      color: var(--stone);
+      margin: 0;
+    }
+    .checkout-summary-item__price {
+      font-size: 0.9rem;
+      color: var(--onyx);
+    }
+    .checkout-summary__row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 0.92rem;
+      color: var(--graphite);
+    }
+    .checkout-summary__row--total {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 8px;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--onyx);
+    }
+    /* Confirmation */
+    .checkout-confirmation {
+      display: none;
+      text-align: center;
+      padding: clamp(60px, 10vw, 140px) 0;
+    }
+    .checkout-confirmation.is-active { display: block; }
+    .checkout-confirmation__icon {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--onyx);
+      color: var(--bone);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 28px;
+    }
+    .checkout-confirmation h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 16px;
+    }
+    .checkout-confirmation p {
+      font-size: 1.05rem;
+      color: var(--graphite);
+      max-width: 48ch;
+      margin: 0 auto 12px;
+    }
+    .checkout-confirmation__order {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      color: var(--stone);
+      margin: 24px 0 32px;
+    }
+    @media (max-width: 1024px) {
+      .checkout-layout { grid-template-columns: 1fr; }
+      .checkout-summary { position: static; order: -1; }
+    }
+    @media (max-width: 760px) {
+      .checkout-fields__row,
+      .checkout-fields__row--3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Header (minimal for checkout) -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <nav class="nav nav--left">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="index.html" class="logo" aria-label="SILIQ Home" data-cursor="logo">SILIQ</a>
+
+      <div class="nav nav--right">
+        <a href="search.html" class="icon-btn" aria-label="Search" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </a>
+        <a href="account.html" class="icon-btn" aria-label="Account" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        </a>
+        <a href="cart.html" class="icon-btn" aria-label="Cart" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 7h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="icon-btn menu-trigger" id="menuTrigger" aria-label="Menu" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Checkout Form -->
+    <section class="checkout-page" id="checkoutPage">
+      <div class="checkout-page__header">
+        <h1>Checkout</h1>
+        <a href="cart.html" class="link-underline" data-cursor="hover">Return to bag</a>
+      </div>
+
+      <div class="checkout-layout" id="checkoutLayout">
+        <!-- Left: Form -->
+        <form class="checkout-form" id="checkoutForm" novalidate>
+          <!-- Contact -->
+          <div class="checkout-section">
+            <p class="checkout-section__title">Contact Information</p>
+            <div class="checkout-fields">
+              <div class="checkout-field">
+                <label for="checkoutEmail">Email Address</label>
+                <input type="email" id="checkoutEmail" name="email" placeholder="you@example.com" required autocomplete="email" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Address -->
+          <div class="checkout-section">
+            <p class="checkout-section__title">Shipping Address</p>
+            <div class="checkout-fields">
+              <div class="checkout-fields__row">
+                <div class="checkout-field">
+                  <label for="shipFirst">First Name</label>
+                  <input type="text" id="shipFirst" name="firstName" placeholder="First name" required autocomplete="given-name" />
+                </div>
+                <div class="checkout-field">
+                  <label for="shipLast">Last Name</label>
+                  <input type="text" id="shipLast" name="lastName" placeholder="Last name" required autocomplete="family-name" />
+                </div>
+              </div>
+              <div class="checkout-field">
+                <label for="shipAddress">Address</label>
+                <input type="text" id="shipAddress" name="address" placeholder="Street address" required autocomplete="street-address" />
+              </div>
+              <div class="checkout-field">
+                <label for="shipApt">Apartment, suite, etc. (optional)</label>
+                <input type="text" id="shipApt" name="apt" placeholder="Apt, suite, unit" autocomplete="address-line2" />
+              </div>
+              <div class="checkout-fields__row--3">
+                <div class="checkout-field">
+                  <label for="shipCity">City</label>
+                  <input type="text" id="shipCity" name="city" placeholder="City" required autocomplete="address-level2" />
+                </div>
+                <div class="checkout-field">
+                  <label for="shipState">State / Province</label>
+                  <input type="text" id="shipState" name="state" placeholder="State" required autocomplete="address-level1" />
+                </div>
+                <div class="checkout-field">
+                  <label for="shipZip">Postal Code</label>
+                  <input type="text" id="shipZip" name="zip" placeholder="Zip / Postal" required autocomplete="postal-code" />
+                </div>
+              </div>
+              <div class="checkout-field">
+                <label for="shipCountry">Country</label>
+                <select id="shipCountry" name="country" required autocomplete="country">
+                  <option value="">Select country</option>
+                  <option value="US">United States</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                  <option value="IT">Italy</option>
+                  <option value="CA">Canada</option>
+                  <option value="AU">Australia</option>
+                  <option value="JP">Japan</option>
+                </select>
+              </div>
+              <div class="checkout-field">
+                <label for="shipPhone">Phone (optional)</label>
+                <input type="tel" id="shipPhone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Method -->
+          <div class="checkout-section">
+            <p class="checkout-section__title">Shipping Method</p>
+            <div class="shipping-options" id="shippingOptions">
+              <label class="shipping-option is-selected">
+                <input type="radio" name="shipping" value="standard" checked />
+                <div class="shipping-option__details">
+                  <p class="shipping-option__name">Standard Shipping</p>
+                  <p class="shipping-option__desc">5–7 business days</p>
+                </div>
+                <span class="shipping-option__price">Free</span>
+              </label>
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="express" />
+                <div class="shipping-option__details">
+                  <p class="shipping-option__name">Express Shipping</p>
+                  <p class="shipping-option__desc">2–3 business days</p>
+                </div>
+                <span class="shipping-option__price">$25</span>
+              </label>
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="overnight" />
+                <div class="shipping-option__details">
+                  <p class="shipping-option__name">Overnight</p>
+                  <p class="shipping-option__desc">Next business day</p>
+                </div>
+                <span class="shipping-option__price">$45</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="checkout-section">
+            <p class="checkout-section__title">Payment</p>
+            <div class="checkout-fields">
+              <div class="checkout-field">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required maxlength="19" autocomplete="cc-number" pattern="[\d\s]{13,19}" />
+              </div>
+              <div class="checkout-fields__row--3">
+                <div class="checkout-field">
+                  <label for="cardExpiry">Expiry Date</label>
+                  <input type="text" id="cardExpiry" name="expiry" placeholder="MM / YY" required maxlength="7" autocomplete="cc-exp" pattern="\d{2}\s?/?\s?\d{2}" />
+                </div>
+                <div class="checkout-field">
+                  <label for="cardCVV">CVV</label>
+                  <input type="text" id="cardCVV" name="cvv" placeholder="123" required maxlength="4" autocomplete="cc-csc" pattern="\d{3,4}" />
+                </div>
+                <div class="checkout-field">
+                  <label for="cardName">Name on Card</label>
+                  <input type="text" id="cardName" name="cardName" placeholder="Full name" required autocomplete="cc-name" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block" style="margin-top:24px;" data-cursor="hover">Place Order</button>
+          <p style="font-size:0.78rem; color:var(--stone); text-align:center; margin-top:14px;">Your payment information is encrypted and secure.</p>
+        </form>
+
+        <!-- Right: Order Summary -->
+        <div class="checkout-summary">
+          <h3>Order Summary</h3>
+          <div class="checkout-summary-items" id="checkoutItems"></div>
+          <div class="checkout-summary__row">
+            <span>Subtotal</span>
+            <span id="checkoutSubtotal">$0</span>
+          </div>
+          <div class="checkout-summary__row">
+            <span>Shipping</span>
+            <span id="checkoutShipping">Free</span>
+          </div>
+          <div class="checkout-summary__row checkout-summary__row--total">
+            <span>Total</span>
+            <span id="checkoutTotal">$0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirmation -->
+      <div class="checkout-confirmation" id="checkoutConfirmation">
+        <div class="checkout-confirmation__icon">&#10003;</div>
+        <h2>Thank you for your order</h2>
+        <p>Your order has been placed successfully. We&rsquo;ll send a confirmation email with tracking details shortly.</p>
+        <p class="checkout-confirmation__order" id="confirmationOrderNum">Order #SLQ-5089</p>
+        <a href="shop.html" class="btn btn--primary" data-cursor="hover">Continue Shopping</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="logo logo--sm">SILIQ</span>
+        <p>Handcrafted 925 sterling silver jewellery, made in limited editions.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <a href="shop.html" data-cursor="hover">All Jewellery</a>
+        <a href="shop.html" data-cursor="hover">Rings</a>
+        <a href="shop.html" data-cursor="hover">Necklaces</a>
+        <a href="shop.html" data-cursor="hover">Earrings</a>
+        <a href="bridal.html" data-cursor="hover">Bridal Collection</a>
+      </div>
+      <div class="footer__col">
+        <h4>House</h4>
+        <a href="about.html" data-cursor="hover">About</a>
+        <a href="about.html" data-cursor="hover">Heritage</a>
+        <a href="stores.html" data-cursor="hover">Stores</a>
+        <a href="journal.html" data-cursor="hover">Journal</a>
+        <a href="contact.html" data-cursor="hover">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Care</h4>
+        <a href="contact.html" data-cursor="hover">Customer Service</a>
+        <a href="#" data-cursor="hover">Shipping &amp; Returns</a>
+        <a href="#" data-cursor="hover">Repair Service</a>
+        <a href="#" data-cursor="hover">Sizing Guide</a>
+        <a href="#" data-cursor="hover">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Follow</h4>
+        <a href="#" data-cursor="hover">Instagram</a>
+        <a href="#" data-cursor="hover">Pinterest</a>
+        <a href="#" data-cursor="hover">TikTok</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p>&copy; <span id="year"></span> SILIQ Maison. All rights reserved.</p>
+      <p>925 · Hallmarked · Crafted by hand</p>
+    </div>
+  </footer>
+
+  <!-- Mobile menu -->
+  <div class="drawer drawer--menu" id="mobileMenu" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--left">
+      <button class="drawer__close" data-close aria-label="Close menu">&times;</button>
+      <nav class="drawer-nav">
+        <a href="shop.html">Shop</a>
+        <a href="shop.html#collections">Collections</a>
+        <a href="bridal.html">Bridal</a>
+        <a href="journal.html">Journal</a>
+        <a href="stores.html">Stores</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <hr />
+        <a href="account.html">Account</a>
+        <a href="search.html">Search</a>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- Vendors -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    const CART_KEY = 'siliq_cart';
+    const shippingPrices = { standard: 0, express: 25, overnight: 45 };
+
+    function getCart() {
+      try {
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+      } catch(e) { return []; }
+    }
+
+    function formatPrice(n) { return '$' + n.toLocaleString(); }
+
+    function updateCartCount() {
+      const cart = getCart();
+      const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      const el = document.getElementById('cartCount');
+      if (el) el.textContent = count;
+    }
+
+    function renderSummary() {
+      const cart = getCart();
+      const itemsEl = document.getElementById('checkoutItems');
+      const subtotalEl = document.getElementById('checkoutSubtotal');
+      const shippingEl = document.getElementById('checkoutShipping');
+      const totalEl = document.getElementById('checkoutTotal');
+
+      if (!itemsEl) return;
+
+      itemsEl.innerHTML = cart.map(item => `
+        <div class="checkout-summary-item">
+          <div class="checkout-summary-item__img">
+            <img src="${item.image}" alt="${item.name}" />
+          </div>
+          <div>
+            <p class="checkout-summary-item__name">${item.name}</p>
+            <p class="checkout-summary-item__variant">${item.variant} &times; ${item.quantity}</p>
+          </div>
+          <span class="checkout-summary-item__price">${formatPrice(item.price * item.quantity)}</span>
+        </div>
+      `).join('');
+
+      updateTotals();
+    }
+
+    function updateTotals() {
+      const cart = getCart();
+      const subtotal = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
+      const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+      const shippingCost = selectedShipping ? shippingPrices[selectedShipping.value] || 0 : 0;
+      const total = subtotal + shippingCost;
+
+      document.getElementById('checkoutSubtotal').textContent = formatPrice(subtotal);
+      document.getElementById('checkoutShipping').textContent = shippingCost === 0 ? 'Free' : formatPrice(shippingCost);
+      document.getElementById('checkoutTotal').textContent = formatPrice(total);
+    }
+
+    // Shipping option selection styling
+    const shippingOptions = document.querySelectorAll('.shipping-option');
+    shippingOptions.forEach(opt => {
+      const radio = opt.querySelector('input[type="radio"]');
+      radio.addEventListener('change', () => {
+        shippingOptions.forEach(o => o.classList.remove('is-selected'));
+        opt.classList.add('is-selected');
+        updateTotals();
+      });
+    });
+
+    // Form submission
+    const checkoutForm = document.getElementById('checkoutForm');
+    const checkoutLayout = document.getElementById('checkoutLayout');
+    const confirmation = document.getElementById('checkoutConfirmation');
+
+    if (checkoutForm) {
+      checkoutForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!checkoutForm.checkValidity()) {
+          checkoutForm.reportValidity();
+          return;
+        }
+
+        // Generate order number
+        const orderNum = '#SLQ-' + (5000 + Math.floor(Math.random() * 1000));
+        document.getElementById('confirmationOrderNum').textContent = 'Order ' + orderNum;
+
+        // Clear cart
+        localStorage.setItem(CART_KEY, JSON.stringify([]));
+        updateCartCount();
+
+        // Show confirmation
+        checkoutLayout.style.display = 'none';
+        document.querySelector('.checkout-page__header').style.display = 'none';
+        confirmation.classList.add('is-active');
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Init
+    renderSummary();
+    updateCartCount();
+  })();
+  </script>
+</body>
+</html>

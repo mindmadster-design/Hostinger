@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Search SILIQ — Find handcrafted 925 sterling silver jewellery." />
+  <meta name="theme-color" content="#0F0F10" />
+  <title>Search — SILIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <style>
+    /* Search page specific styles */
+    .search-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .search-page__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px var(--pad-x);
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .search-page__close {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--onyx);
+      transition: opacity var(--t-fast) var(--ease);
+    }
+    .search-page__close:hover { opacity: 0.5; }
+
+    .search-page__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: clamp(40px, 8vw, 100px) var(--pad-x) 60px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .search-input-wrap {
+      width: 100%;
+      position: relative;
+      margin-bottom: 48px;
+    }
+    .search-input-wrap input {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid var(--onyx);
+      padding: 18px 48px 18px 0;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--onyx);
+      letter-spacing: -0.01em;
+    }
+    .search-input-wrap input:focus { outline: none; }
+    .search-input-wrap input::placeholder { color: var(--silver); }
+    .search-input-wrap__icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      color: var(--onyx);
+    }
+    .search-input-wrap__clear {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      font-size: 1.2rem;
+      color: var(--stone);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .search-input-wrap__clear.is-visible { display: inline-flex; }
+
+    .search-section {
+      width: 100%;
+      margin-bottom: 48px;
+    }
+    .search-section__title {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin: 0 0 18px;
+    }
+
+    .search-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .search-tag {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--graphite);
+      padding: 10px 20px;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+    }
+    .search-tag:hover {
+      background: var(--onyx);
+      border-color: var(--onyx);
+      color: var(--bone);
+    }
+
+    .recent-searches {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .recent-search-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+      color: var(--graphite);
+      cursor: pointer;
+      transition: color var(--t-fast) var(--ease);
+    }
+    .recent-search-item:hover { color: var(--onyx); }
+    .recent-search-item__remove {
+      width: 24px;
+      height: 24px;
+      font-size: 1rem;
+      color: var(--stone);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: color var(--t-fast) var(--ease);
+    }
+    .recent-search-item__remove:hover { color: var(--onyx); }
+
+    .search-results {
+      width: 100%;
+    }
+    .search-results__count {
+      font-size: 0.85rem;
+      color: var(--stone);
+      margin-bottom: 24px;
+    }
+    .search-results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 32px 24px;
+    }
+
+    .search-empty {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--stone);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 760px) {
+      .search-results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 16px;
+      }
+    }
+    @media (max-width: 480px) {
+      .search-results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="search-page">
+    <!-- Search header -->
+    <div class="search-page__header">
+      <a href="index.html" class="logo" aria-label="SILIQ Home">SILIQ</a>
+      <a href="javascript:history.back()" class="search-page__close" aria-label="Close search">&times;</a>
+    </div>
+
+    <!-- Search body -->
+    <div class="search-page__body">
+      <div class="search-input-wrap">
+        <input type="search" id="searchInput" placeholder="Search jewellery..." autocomplete="off" autofocus />
+        <button class="search-input-wrap__clear" id="searchClear" aria-label="Clear search">&times;</button>
+        <svg class="search-input-wrap__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </div>
+
+      <!-- Popular searches -->
+      <div class="search-section" id="popularSearches">
+        <p class="search-section__title">Popular Searches</p>
+        <div class="search-tags">
+          <button class="search-tag" data-query="Rings">Rings</button>
+          <button class="search-tag" data-query="Necklaces">Necklaces</button>
+          <button class="search-tag" data-query="Earrings">Earrings</button>
+          <button class="search-tag" data-query="Bracelets">Bracelets</button>
+          <button class="search-tag" data-query="Signet">Signet</button>
+          <button class="search-tag" data-query="Pendant">Pendant</button>
+          <button class="search-tag" data-query="Bridal">Bridal</button>
+          <button class="search-tag" data-query="Cuff">Cuff</button>
+        </div>
+      </div>
+
+      <!-- Recent searches -->
+      <div class="search-section" id="recentSearchesSection" style="display:none;">
+        <p class="search-section__title">Recent Searches</p>
+        <div class="recent-searches" id="recentSearches"></div>
+      </div>
+
+      <!-- Search results -->
+      <div class="search-results" id="searchResults" style="display:none;">
+        <p class="search-results__count" id="resultsCount"></p>
+        <div class="search-results-grid" id="resultsGrid"></div>
+      </div>
+
+      <!-- No results -->
+      <div class="search-empty" id="searchEmpty" style="display:none;">
+        <p>No results found. Try a different search term.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="logo logo--sm">SILIQ</span>
+        <p>Handcrafted 925 sterling silver jewellery, made in limited editions.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <a href="shop.html" data-cursor="hover">All Jewellery</a>
+        <a href="shop.html" data-cursor="hover">Rings</a>
+        <a href="shop.html" data-cursor="hover">Necklaces</a>
+        <a href="shop.html" data-cursor="hover">Earrings</a>
+        <a href="bridal.html" data-cursor="hover">Bridal Collection</a>
+      </div>
+      <div class="footer__col">
+        <h4>House</h4>
+        <a href="about.html" data-cursor="hover">About</a>
+        <a href="about.html" data-cursor="hover">Heritage</a>
+        <a href="stores.html" data-cursor="hover">Stores</a>
+        <a href="journal.html" data-cursor="hover">Journal</a>
+        <a href="contact.html" data-cursor="hover">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Care</h4>
+        <a href="contact.html" data-cursor="hover">Customer Service</a>
+        <a href="#" data-cursor="hover">Shipping &amp; Returns</a>
+        <a href="#" data-cursor="hover">Repair Service</a>
+        <a href="#" data-cursor="hover">Sizing Guide</a>
+        <a href="#" data-cursor="hover">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Follow</h4>
+        <a href="#" data-cursor="hover">Instagram</a>
+        <a href="#" data-cursor="hover">Pinterest</a>
+        <a href="#" data-cursor="hover">TikTok</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p>&copy; <span id="year"></span> SILIQ Maison. All rights reserved.</p>
+      <p>925 · Hallmarked · Crafted by hand</p>
+    </div>
+  </footer>
+
+  <!-- Vendors -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // Hardcoded product data for search simulation
+    const products = [
+      { name: 'Aera Signet Ring', category: 'Rings', price: '$185', image: 'https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=600&q=80', href: 'product.html' },
+      { name: 'Lume Pendant Necklace', category: 'Necklaces', price: '$220', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80', href: 'product.html' },
+      { name: 'Vesta Hoop Earrings', category: 'Earrings', price: '$140', image: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80', href: 'product.html' },
+      { name: 'Soliel Cuff Bracelet', category: 'Bracelets', price: '$310', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=600&q=80', href: 'product.html' },
+      { name: 'Nova Chain Necklace', category: 'Necklaces', price: '$275', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80', href: 'product.html' },
+      { name: 'Luna Crescent Ring', category: 'Rings', price: '$165', image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&q=80', href: 'product.html' },
+      { name: 'Celeste Drop Earrings', category: 'Earrings', price: '$195', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80', href: 'product.html' },
+      { name: 'Bridal Eternity Band', category: 'Bridal', price: '$420', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80', href: 'product.html' },
+      { name: 'Heritage Signet Ring', category: 'Rings', price: '$245', image: 'https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=600&q=80', href: 'product.html' },
+      { name: 'Whisper Bangle', category: 'Bracelets', price: '$198', image: 'https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=600&q=80', href: 'product.html' },
+      { name: 'Bridal Pendant Set', category: 'Bridal', price: '$580', image: 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&q=80', href: 'product.html' },
+      { name: 'Aria Thin Band Ring', category: 'Rings', price: '$125', image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&q=80', href: 'product.html' },
+    ];
+
+    const STORAGE_KEY = 'siliq_recent_searches';
+    const MAX_RECENT = 5;
+
+    const searchInput = document.getElementById('searchInput');
+    const searchClear = document.getElementById('searchClear');
+    const popularSection = document.getElementById('popularSearches');
+    const recentSection = document.getElementById('recentSearchesSection');
+    const recentContainer = document.getElementById('recentSearches');
+    const resultsSection = document.getElementById('searchResults');
+    const resultsCount = document.getElementById('resultsCount');
+    const resultsGrid = document.getElementById('resultsGrid');
+    const searchEmpty = document.getElementById('searchEmpty');
+
+    function getRecentSearches() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) { return []; }
+    }
+
+    function saveRecentSearch(query) {
+      let recent = getRecentSearches();
+      recent = recent.filter(q => q.toLowerCase() !== query.toLowerCase());
+      recent.unshift(query);
+      if (recent.length > MAX_RECENT) recent = recent.slice(0, MAX_RECENT);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(recent));
+    }
+
+    function removeRecentSearch(query) {
+      let recent = getRecentSearches();
+      recent = recent.filter(q => q !== query);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(recent));
+      renderRecentSearches();
+    }
+
+    function renderRecentSearches() {
+      const recent = getRecentSearches();
+      if (recent.length === 0) {
+        recentSection.style.display = 'none';
+        return;
+      }
+      recentSection.style.display = '';
+      recentContainer.innerHTML = recent.map(q => `
+        <div class="recent-search-item">
+          <span data-query="${q}">${q}</span>
+          <button class="recent-search-item__remove" data-remove="${q}" aria-label="Remove">&times;</button>
+        </div>
+      `).join('');
+
+      recentContainer.querySelectorAll('[data-query]').forEach(el => {
+        el.addEventListener('click', () => {
+          searchInput.value = el.dataset.query;
+          performSearch(el.dataset.query);
+        });
+      });
+      recentContainer.querySelectorAll('[data-remove]').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          removeRecentSearch(el.dataset.remove);
+        });
+      });
+    }
+
+    function performSearch(query) {
+      query = query.trim();
+      searchClear.classList.toggle('is-visible', query.length > 0);
+
+      if (query.length === 0) {
+        resultsSection.style.display = 'none';
+        searchEmpty.style.display = 'none';
+        popularSection.style.display = '';
+        renderRecentSearches();
+        return;
+      }
+
+      // Save to recent
+      saveRecentSearch(query);
+
+      // Filter products
+      const lowerQ = query.toLowerCase();
+      const matches = products.filter(p =>
+        p.name.toLowerCase().includes(lowerQ) ||
+        p.category.toLowerCase().includes(lowerQ)
+      );
+
+      popularSection.style.display = 'none';
+      recentSection.style.display = 'none';
+
+      if (matches.length === 0) {
+        resultsSection.style.display = 'none';
+        searchEmpty.style.display = '';
+        return;
+      }
+
+      searchEmpty.style.display = 'none';
+      resultsSection.style.display = '';
+      resultsCount.textContent = `${matches.length} result${matches.length !== 1 ? 's' : ''} for "${query}"`;
+
+      resultsGrid.innerHTML = matches.map(p => `
+        <a href="${p.href}" class="product-card" data-cursor="view">
+          <div class="product-card__media">
+            <img class="product-card__img product-card__img--1" src="${p.image}" alt="${p.name}" />
+          </div>
+          <div class="product-card__body">
+            <h3>${p.name}</h3>
+            <p class="product-card__meta">${p.category}</p>
+            <p class="product-card__price">${p.price}</p>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Event listeners
+    let debounceTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => performSearch(searchInput.value), 200);
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        clearTimeout(debounceTimer);
+        performSearch(searchInput.value);
+      }
+    });
+
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      performSearch('');
+      searchInput.focus();
+    });
+
+    // Popular search tags
+    document.querySelectorAll('.search-tag[data-query]').forEach(tag => {
+      tag.addEventListener('click', () => {
+        searchInput.value = tag.dataset.query;
+        performSearch(tag.dataset.query);
+      });
+    });
+
+    // Init
+    renderRecentSearches();
+  })();
+  </script>
+</body>
+</html>
