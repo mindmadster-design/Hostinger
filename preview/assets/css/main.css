@@ -987,3 +987,486 @@ em {
   [data-anim], .reveal { visibility: visible; opacity: 1; transform: none; }
   .mask-reveal { clip-path: inset(0); }
 }
+
+
+
+/* =============================================================
+   ACTIVE NAV STATE (multi-page)
+============================================================= */
+.nav a.is-active { color: var(--onyx); }
+.nav a.is-active::after { transform: scaleX(1); }
+
+/* =============================================================
+   PAGE HERO (used on About)
+============================================================= */
+.page-hero {
+  position: relative;
+  height: clamp(440px, 70vh, 700px);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--bone);
+}
+.page-hero__media {
+  position: absolute;
+  inset: 0;
+}
+.page-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+.page-hero__content {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--pad-x);
+  max-width: 900px;
+}
+.page-hero__content h1 {
+  color: var(--bone);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  margin: 0 0 0.4em;
+}
+.page-hero__crumb {
+  color: rgba(244, 241, 236, 0.7);
+}
+.page-hero__lede {
+  color: rgba(244, 241, 236, 0.85);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+/* =============================================================
+   PAGE HEADER (compact, used on Contact, Shop)
+============================================================= */
+.page-header {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(80px, 10vw, 130px) var(--pad-x) clamp(40px, 5vw, 60px);
+  text-align: center;
+}
+.page-header h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 400;
+  margin: 0 0 0.4em;
+}
+.page-header__lede {
+  font-size: 1.05rem;
+  color: var(--graphite);
+  max-width: 56ch;
+  margin: 0 auto;
+}
+
+/* =============================================================
+   ABOUT — Values grid
+============================================================= */
+.section--values {
+  padding-top: clamp(80px, 10vw, 130px);
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+}
+.value-card {
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.value-num {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  color: var(--silver-2);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 18px;
+}
+.value-card h3 {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  margin: 0 0 12px;
+}
+.value-card p {
+  color: var(--graphite);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* =============================================================
+   ABOUT — Atelier masonry grid
+============================================================= */
+.atelier-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.atelier-grid__item {
+  aspect-ratio: 3 / 4;
+  background: var(--ivory);
+}
+.atelier-grid__item--tall {
+  grid-row: span 2;
+  aspect-ratio: 3 / 8;
+}
+.atelier-grid__item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 2s var(--ease);
+}
+.atelier-grid__item:hover img { transform: scale(1.04); }
+
+/* =============================================================
+   ABOUT — Founder quote
+============================================================= */
+.section--quote {
+  text-align: center;
+  max-width: 1000px;
+}
+.section--quote blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.4vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.3;
+  color: var(--onyx);
+  margin: 0 0 32px;
+  padding: 0 var(--pad-x);
+  letter-spacing: -0.005em;
+}
+.section--quote cite {
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* =============================================================
+   CONTACT — split layout
+============================================================= */
+.section--contact {
+  padding-top: clamp(40px, 5vw, 80px);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: start;
+}
+.contact-form-wrap h2 {
+  margin-bottom: 32px;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contact-form label > span {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--onyx);
+  font-weight: 300;
+  transition: border-color var(--t-fast) var(--ease);
+  resize: vertical;
+}
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-bottom-color: var(--onyx);
+}
+.contact-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23888782' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  cursor: pointer;
+  padding-right: 24px;
+}
+.contact-form button {
+  align-self: flex-start;
+  margin-top: 12px;
+}
+
+.contact-info {
+  border-left: 1px solid var(--line);
+  padding-left: clamp(28px, 3vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  position: sticky;
+  top: 110px;
+}
+.contact-info__block .eyebrow { margin-bottom: 12px; }
+.contact-info__block p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--graphite);
+  line-height: 1.7;
+}
+
+/* =============================================================
+   CONTACT — Map / atelier image strip
+============================================================= */
+.section--map {
+  position: relative;
+  height: clamp(360px, 50vw, 520px);
+  overflow: hidden;
+  margin: clamp(60px, 8vw, 100px) 0;
+}
+.section--map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.section--map__caption {
+  position: absolute;
+  bottom: clamp(20px, 4vw, 48px);
+  left: clamp(20px, 4vw, 48px);
+  background: var(--bone);
+  padding: 18px 24px;
+  max-width: 280px;
+}
+.section--map__caption .eyebrow { margin-bottom: 8px; }
+.section--map__caption p {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--onyx);
+}
+
+/* =============================================================
+   CONTACT — FAQ accordion
+============================================================= */
+.section--faq { max-width: 900px; }
+.faq {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.faq__item {
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+}
+.faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 28px 0;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: var(--onyx);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  transition: color var(--t-fast) var(--ease);
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: '+';
+  font-family: var(--sans);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--stone);
+  transition: transform var(--t-med) var(--ease), color var(--t-fast) var(--ease);
+}
+.faq__item[open] summary::after {
+  transform: rotate(45deg);
+  color: var(--onyx);
+}
+.faq__item summary:hover { color: var(--graphite); }
+.faq__item p {
+  margin: 0 0 28px;
+  color: var(--graphite);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 80ch;
+}
+
+/* =============================================================
+   SHOP — Toolbar (categories + sort)
+============================================================= */
+.shop-toolbar {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 80px;
+  z-index: 30;
+  background: rgba(244, 241, 236, 0.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+.shop-toolbar__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 16px var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.shop-categories {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.shop-cat {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.shop-cat:hover { color: var(--onyx); }
+.shop-cat.is-active {
+  color: var(--bone);
+  background: var(--onyx);
+  border-color: var(--onyx);
+}
+.shop-sort {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.shop-sort select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 6px 22px 6px 0;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--onyx);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23888782' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+}
+.shop-sort select:focus { outline: none; }
+
+/* =============================================================
+   SHOP — Larger product grid (3 cols on desktop)
+============================================================= */
+.section--shop-grid { padding-top: clamp(40px, 5vw, 70px); }
+.products-grid--lg {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 24px;
+}
+
+.product-card { transition: opacity 0.4s var(--ease); }
+.product-card.is-filtered-out {
+  display: none;
+}
+
+/* =============================================================
+   SHOP — Pagination
+============================================================= */
+.shop-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 60px;
+}
+.shop-pagination__num,
+.shop-pagination__btn {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--stone);
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color var(--t-fast) var(--ease);
+  background: transparent;
+  border: 0;
+}
+.shop-pagination__num.is-active,
+.shop-pagination__num:hover,
+.shop-pagination__btn:hover:not(:disabled) {
+  color: var(--onyx);
+}
+.shop-pagination__num.is-active {
+  border-bottom: 1px solid var(--onyx);
+}
+.shop-pagination__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* =============================================================
+   Responsive — multi-page
+============================================================= */
+@media (max-width: 1024px) {
+  .values-grid { grid-template-columns: 1fr; gap: 24px; }
+  .atelier-grid { grid-template-columns: repeat(2, 1fr); }
+  .atelier-grid__item--tall { grid-row: auto; aspect-ratio: 3 / 4; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-info {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 32px;
+    position: static;
+  }
+  .products-grid--lg { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .shop-toolbar { top: 60px; }
+  .shop-toolbar__inner { flex-direction: column; align-items: flex-start; }
+  .contact-form__row { grid-template-columns: 1fr; }
+  .section--map__caption { left: 16px; bottom: 16px; padding: 14px 18px; max-width: 240px; }
+}
+
+@media (max-width: 480px) {
+  .products-grid--lg { grid-template-columns: 1fr; }
+  .atelier-grid { grid-template-columns: 1fr; }
+}

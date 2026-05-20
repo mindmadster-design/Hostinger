@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shop SILIQ — handcrafted 925 sterling silver rings, necklaces, earrings, bracelets. Limited editions." />
+  <meta name="theme-color" content="#0F0F10" />
+  <title>Shop — SILIQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-loading">
+
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__brand">
+      <span class="loader__letter">S</span><span class="loader__letter">I</span><span class="loader__letter">L</span><span class="loader__letter">I</span><span class="loader__letter">Q</span>
+    </div>
+    <div class="loader__line"></div>
+    <div class="loader__caption"><span>Maison de Argent</span></div>
+  </div>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="page-transition" id="pageTransition" aria-hidden="true"></div>
+
+  <div class="announcement">
+    <div class="announcement__track">
+      <span>Complimentary Shipping On Orders Over $150</span>
+      <span>·</span>
+      <span>Handcrafted In Limited Editions</span>
+      <span>·</span>
+      <span>Lifetime Repair Service</span>
+      <span>·</span>
+      <span>Complimentary Shipping On Orders Over $150</span>
+      <span>·</span>
+      <span>Handcrafted In Limited Editions</span>
+      <span>·</span>
+      <span>Lifetime Repair Service</span>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <nav class="nav nav--left">
+        <a href="shop.html" class="is-active">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="index.html" class="logo" aria-label="SILIQ Home" data-cursor="logo">SILIQ</a>
+      <div class="nav nav--right">
+        <button class="icon-btn" aria-label="Search" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <a href="#" class="icon-btn" aria-label="Account" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        </a>
+        <button class="icon-btn cart-trigger" aria-label="Cart" id="cartTrigger" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 7h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">2</span>
+        </button>
+        <button class="icon-btn menu-trigger" id="menuTrigger" aria-label="Menu" data-cursor="hover">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+  <!-- Page header -->
+  <section class="page-header">
+    <p class="eyebrow" data-anim="fade-up">Home / Shop</p>
+    <h1 data-anim="words">The Collection.</h1>
+    <p class="page-header__lede" data-anim="fade-up">Solid 925 sterling silver, hand-finished in our atelier. Each piece is hallmarked and signed.</p>
+  </section>
+
+  <!-- Toolbar: filters + sort -->
+  <section class="shop-toolbar">
+    <div class="shop-toolbar__inner">
+      <div class="shop-categories" role="tablist" aria-label="Categories">
+        <button class="shop-cat is-active" data-cat="all" data-cursor="hover">All</button>
+        <button class="shop-cat" data-cat="rings" data-cursor="hover">Rings</button>
+        <button class="shop-cat" data-cat="necklaces" data-cursor="hover">Necklaces</button>
+        <button class="shop-cat" data-cat="earrings" data-cursor="hover">Earrings</button>
+        <button class="shop-cat" data-cat="bracelets" data-cursor="hover">Bracelets</button>
+      </div>
+      <div class="shop-sort">
+        <span class="muted small">Sort by</span>
+        <select aria-label="Sort by">
+          <option>Featured</option>
+          <option>Newest</option>
+          <option>Price · Low to High</option>
+          <option>Price · High to Low</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products grid (12 items) -->
+  <section class="section section--shop-grid">
+    <div class="products-grid products-grid--lg" id="shopGrid">
+
+      <a href="#" class="product-card reveal" data-cat="rings" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=900&q=80" alt="" />
+          <span class="product-card__tag">New</span>
+        </div>
+        <div class="product-card__body">
+          <h3>Aera Signet Ring</h3>
+          <p class="product-card__meta">925 Sterling Silver</p>
+          <p class="product-card__price">$185</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="necklaces" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Lume Pendant</h3>
+          <p class="product-card__meta">925 Sterling Silver, 18&quot; chain</p>
+          <p class="product-card__price">$220</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="earrings" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Vesta Hoop Earrings</h3>
+          <p class="product-card__meta">925 Sterling Silver</p>
+          <p class="product-card__price">$140</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="bracelets" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=900&q=80" alt="" />
+          <span class="product-card__tag">Limited</span>
+        </div>
+        <div class="product-card__body">
+          <h3>Soliel Cuff</h3>
+          <p class="product-card__meta">925 Sterling Silver, hand-engraved</p>
+          <p class="product-card__price">$310</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="rings" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Atria Band</h3>
+          <p class="product-card__meta">925 Sterling Silver, brushed finish</p>
+          <p class="product-card__price">$165</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="necklaces" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=900&q=80" alt="" />
+          <span class="product-card__tag">New</span>
+        </div>
+        <div class="product-card__body">
+          <h3>Helia Chain</h3>
+          <p class="product-card__meta">925 Sterling Silver, 22&quot; chain</p>
+          <p class="product-card__price">$245</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="earrings" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1633934542430-0905ec85aa4f?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Cinta Drop Earrings</h3>
+          <p class="product-card__meta">925 Sterling Silver</p>
+          <p class="product-card__price">$175</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="rings" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Iris Stacker</h3>
+          <p class="product-card__meta">925 Sterling Silver, set of 3</p>
+          <p class="product-card__price">$220</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="bracelets" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Ondine Chain Bracelet</h3>
+          <p class="product-card__meta">925 Sterling Silver, 7&quot;</p>
+          <p class="product-card__price">$195</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="necklaces" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80" alt="" />
+          <span class="product-card__tag">Limited</span>
+        </div>
+        <div class="product-card__body">
+          <h3>Petra Locket</h3>
+          <p class="product-card__meta">925 Sterling Silver, hand-engraved</p>
+          <p class="product-card__price">$340</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="earrings" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Lira Studs</h3>
+          <p class="product-card__meta">925 Sterling Silver, pair</p>
+          <p class="product-card__price">$110</p>
+        </div>
+      </a>
+
+      <a href="#" class="product-card reveal" data-cat="bracelets" data-cursor="view">
+        <div class="product-card__media">
+          <img class="product-card__img product-card__img--1" src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=900&q=80" alt="" />
+          <img class="product-card__img product-card__img--2" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=900&q=80" alt="" />
+        </div>
+        <div class="product-card__body">
+          <h3>Mara Bangle</h3>
+          <p class="product-card__meta">925 Sterling Silver, polished</p>
+          <p class="product-card__price">$255</p>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="shop-pagination" data-anim="fade-up">
+      <button class="shop-pagination__btn" disabled aria-label="Previous">←</button>
+      <span class="shop-pagination__num is-active">01</span>
+      <span class="shop-pagination__num">02</span>
+      <span class="shop-pagination__num">03</span>
+      <button class="shop-pagination__btn" data-cursor="hover" aria-label="Next">→</button>
+    </div>
+  </section>
+
+  <!-- Editorial promo strip -->
+  <section class="section section--editorial">
+    <div class="editorial">
+      <div class="editorial__copy">
+        <p class="eyebrow" data-anim="fade-up">Bespoke</p>
+        <h2 data-anim="words">Commission a piece.</h2>
+        <p data-anim="fade-up">Have something specific in mind? We accept a small number of bespoke commissions each season — engraved bands, signet rings, monogrammed pendants. Allow 6–10 weeks.</p>
+        <a href="contact.html" class="link-underline" data-cursor="hover">Begin a commission</a>
+      </div>
+      <div class="editorial__media mask-reveal">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1400&q=80" alt="Custom commission" data-parallax="0.15" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section--newsletter">
+    <div class="newsletter">
+      <p class="eyebrow" data-anim="fade-up">Correspondence</p>
+      <h2 data-anim="words">Letters from the atelier.</h2>
+      <p class="newsletter__lede" data-anim="fade-up">First access to new pieces, private events, and quiet stories from the bench.</p>
+      <form class="newsletter__form" data-anim="fade-up" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Thank you ✓';">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit" data-cursor="hover">Subscribe</button>
+      </form>
+      <p class="newsletter__fine">By subscribing you agree to our Privacy Policy.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="logo logo--sm">SILIQ</span>
+        <p>Handcrafted 925 sterling silver jewellery, made in limited editions.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <a href="shop.html" data-cursor="hover">All Jewellery</a>
+        <a href="shop.html" data-cursor="hover">Rings</a>
+        <a href="shop.html" data-cursor="hover">Necklaces</a>
+        <a href="shop.html" data-cursor="hover">Earrings</a>
+        <a href="shop.html" data-cursor="hover">Bracelets</a>
+      </div>
+      <div class="footer__col">
+        <h4>House</h4>
+        <a href="about.html" data-cursor="hover">About</a>
+        <a href="about.html" data-cursor="hover">Heritage</a>
+        <a href="about.html" data-cursor="hover">The Atelier</a>
+        <a href="contact.html" data-cursor="hover">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Care</h4>
+        <a href="contact.html" data-cursor="hover">Customer Service</a>
+        <a href="#" data-cursor="hover">Shipping & Returns</a>
+        <a href="#" data-cursor="hover">Repair Service</a>
+        <a href="#" data-cursor="hover">Sizing Guide</a>
+        <a href="#" data-cursor="hover">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4>Follow</h4>
+        <a href="#" data-cursor="hover">Instagram</a>
+        <a href="#" data-cursor="hover">Pinterest</a>
+        <a href="#" data-cursor="hover">TikTok</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p>© <span id="year"></span> SILIQ Maison. All rights reserved.</p>
+      <p>925 · Hallmarked · Crafted by hand</p>
+    </div>
+  </footer>
+
+  <!-- Mobile menu -->
+  <div class="drawer drawer--menu" id="mobileMenu" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--left">
+      <button class="drawer__close" data-close aria-label="Close menu">×</button>
+      <nav class="drawer-nav">
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <hr />
+        <a href="#">Account</a>
+        <a href="#">Search</a>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- Cart drawer -->
+  <div class="drawer drawer--cart" id="cartDrawer" aria-hidden="true" data-lenis-prevent>
+    <div class="drawer__overlay" data-close></div>
+    <aside class="drawer__panel drawer__panel--right">
+      <div class="drawer__head">
+        <h3>Your Bag <span class="muted">(2)</span></h3>
+        <button class="drawer__close" data-close aria-label="Close cart">×</button>
+      </div>
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=300&q=80" alt="" />
+          <div>
+            <h4>Aera Signet Ring</h4>
+            <p class="muted">Size 6 · Polished</p>
+            <p class="cart-item__price">$185</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+        <div class="cart-item">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&q=80" alt="" />
+          <div>
+            <h4>Lume Pendant</h4>
+            <p class="muted">18&quot; chain</p>
+            <p class="cart-item__price">$220</p>
+          </div>
+          <button class="cart-item__remove" aria-label="Remove">×</button>
+        </div>
+      </div>
+      <div class="drawer__foot">
+        <div class="cart-totals"><span>Subtotal</span><span>$405</span></div>
+        <p class="muted small">Shipping and taxes calculated at checkout.</p>
+        <a href="#" class="btn btn--primary btn--block" data-cursor="hover">Checkout</a>
+        <a href="#" class="link-underline cart-view" data-cursor="hover">View bag</a>
+      </div>
+    </aside>
+  </div>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
