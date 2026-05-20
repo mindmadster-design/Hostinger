@@ -72,6 +72,9 @@
     /* 3, 4, 7. Scroll-driven anims (text reveal, mask reveal, parallax, fades) */
     setupScrollAnimations();
 
+    /* Animated counters (About page) */
+    setupCounters();
+
     /* 11. Page transition — DISABLED.
        Letting it run was creating a second black slide-up over the loader
        and a flash on every page nav. Just hide the overlay element so
@@ -324,6 +327,36 @@
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
+        },
+      });
+    });
+  }
+
+  /* =============================================================
+     Animated Counters (About page)
+  ============================================================= */
+  function setupCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+    if (!counters.length) return;
+
+    counters.forEach((el) => {
+      const target = parseInt(el.dataset.count, 10);
+      const formatNumber = (n) => n.toLocaleString();
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: target,
+            duration: 2.2,
+            ease: 'expo.out',
+            onUpdate: () => {
+              el.textContent = formatNumber(Math.floor(obj.val));
+            },
+          });
         },
       });
     });
