@@ -75,7 +75,10 @@
     /* 11. Page transition (between pages) */
     setupPageTransitions();
 
-    /* 12. Loader → hero intro */
+    /* Shop filtering (only runs if shop grid present) */
+    setupShopFilter();
+
+    /* 12. Loader → hero intro (or skip if already visited this session) */
     runIntroSequence();
   }
 
@@ -322,21 +325,26 @@
     const overlay = document.getElementById('pageTransition');
     if (!overlay) return;
 
-    // Reveal-in on load: overlay slides up from cover
-    gsap.set(overlay, { yPercent: 0 }); // start covering
+    // Has the user already seen the loader this session?
+    let hasVisited = false;
+    try { hasVisited = sessionStorage.getItem('siliq_visited') === '1'; } catch (e) { /* ignore */ }
+
+    // Reveal-in on load: overlay slides up to uncover the page
+    // - First visit: delayed to align with loader exit
+    // - Subsequent navs: quick slide-up immediately
+    gsap.set(overlay, { yPercent: 0 });
     gsap.to(overlay, {
       yPercent: -100,
-      duration: 1.0,
+      duration: hasVisited ? 0.8 : 1.0,
       ease: 'expo.inOut',
-      delay: 2.4, // matches loader exit
-      onComplete: () => gsap.set(overlay, { yPercent: 100 }), // park below for next nav
+      delay: hasVisited ? 0.05 : 2.4,
+      onComplete: () => gsap.set(overlay, { yPercent: 100 }),
     });
 
     // Intercept clicks on internal links that go to other pages (not anchors)
     document.querySelectorAll('a[href]').forEach((a) => {
       const href = a.getAttribute('href');
       if (!href) return;
-      // skip anchors, externals, mailto/tel, and current-page links
       if (
         href.startsWith('#') ||
         href.startsWith('mailto:') ||
@@ -348,6 +356,11 @@
 
       const isExternal = /^https?:\/\//.test(href) && !href.includes(window.location.host);
       if (isExternal) return;
+
+      // Don't intercept links to the current page
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      const linkPath = href.split('/').pop().split('#')[0].split('?')[0];
+      if (linkPath === currentPath || linkPath === '' || linkPath === '#') return;
 
       a.addEventListener('click', (e) => {
         e.preventDefault();
@@ -363,6 +376,9 @@
 
   /* =============================================================
      12) Loader → Hero intro sequence
+        — On subsequent pages within the same session, skip the loader
+          and just play the page-transition reveal. The loader is only
+          for the first impression.
   ============================================================= */
   function runIntroSequence() {
     const body = document.body;
@@ -377,13 +393,64 @@
     body.classList.add('is-locked');
     if (window._lenis) window._lenis.stop();
 
+    // Has the user already seen the loader this session?
+    let hasVisited = false;
+    try { hasVisited = sessionStorage.getItem('siliq_visited') === '1'; } catch (e) { /* ignore */ }
+
+    // ----- Path A: subsequent page nav — skip loader, just reveal -----
+    if (hasVisited) {
+      if (loader) loader.style.display = 'none';
+
+      // Pre-set hero state if there is one
+      if (heroEyebrow) gsap.set(heroEyebrow, { y: 24, opacity: 0, visibility: 'visible' });
+      if (heroSubtitle) gsap.set(heroSubtitle, { y: 24, opacity: 0, visibility: 'visible' });
+      gsap.set(heroCtaButtons, { y: 24, opacity: 0, visibility: 'visible' });
+      if (heroImg) gsap.set(heroImg, { scale: 1.08 });
+
+      const tl = gsap.timeline({
+        defaults: { ease: 'expo.out' },
+        onComplete: () => {
+          body.classList.remove('is-locked');
+          body.classList.add('is-loaded');
+          if (window._lenis) window._lenis.start();
+          ScrollTrigger.refresh();
+        },
+      });
+
+      // Brief delay so the page-transition overlay can slide off first
+      tl.to({}, { duration: 0.4 });
+
+      if (heroImg) tl.to(heroImg, { scale: 1, duration: 1.4, ease: 'expo.out' }, 0);
+
+      const heroWordInners = heroTitle ? heroTitle.querySelectorAll('.word-inner') : [];
+      if (heroWordInners.length) {
+        heroTitle.style.visibility = 'visible';
+        tl.to(heroWordInners, { yPercent: 0, duration: 0.9, stagger: 0.05, ease: 'expo.out' }, '-=1.0');
+      }
+      if (heroEyebrow) tl.to(heroEyebrow, { y: 0, opacity: 1, duration: 0.6 }, '-=0.7');
+      if (heroSubtitle) tl.to(heroSubtitle, { y: 0, opacity: 1, duration: 0.6 }, '-=0.5');
+      tl.to(heroCtaButtons, { y: 0, opacity: 1, duration: 0.5, stagger: 0.07 }, '-=0.4');
+      if (heroScroll) tl.from(heroScroll, { opacity: 0, duration: 0.5 }, '-=0.2');
+
+      // For inner pages without a hero, just unlock quickly
+      if (!heroImg && !heroTitle) {
+        body.classList.remove('is-locked');
+        body.classList.add('is-loaded');
+        if (window._lenis) window._lenis.start();
+        ScrollTrigger.refresh();
+      }
+      return;
+    }
+
+    // ----- Path B: first visit — full loader sequence -----
+
     // Pre-set LOADER state (must use gsap.set so GSAP tracks yPercent properly,
     // otherwise CSS-set translateY(110%) is invisible to GSAP's animation engine)
     gsap.set('.loader__letter', { yPercent: 110, y: 0 });
     gsap.set('.loader__caption span', { yPercent: 110, y: 0 });
     gsap.set('.loader__line', { width: 0 });
 
-    // Pre-set hero state (already set by data-anim setups above; reaffirm)
+    // Pre-set hero state
     if (heroEyebrow) gsap.set(heroEyebrow, { y: 24, opacity: 0, visibility: 'visible' });
     if (heroSubtitle) gsap.set(heroSubtitle, { y: 24, opacity: 0, visibility: 'visible' });
     gsap.set(heroCtaButtons, { y: 24, opacity: 0, visibility: 'visible' });
@@ -397,6 +464,7 @@
         if (window._lenis) window._lenis.start();
         if (loader) loader.style.display = 'none';
         ScrollTrigger.refresh();
+        try { sessionStorage.setItem('siliq_visited', '1'); } catch (e) { /* ignore */ }
       },
     });
 
@@ -404,32 +472,59 @@
     tl.to('.loader__letter', { yPercent: 0, duration: 0.9, stagger: 0.07 }, 0.2)
       .to('.loader__line', { width: 320, duration: 0.9, ease: 'power2.inOut' }, '-=0.6')
       .to('.loader__caption span', { yPercent: 0, duration: 0.7 }, '-=0.6')
-      // Hold a beat
       .to({}, { duration: 0.35 })
-      // Loader exit
       .to('.loader', { yPercent: -100, duration: 1.0, ease: 'expo.inOut' }, '+=0.05');
 
-    // Hero reveal (overlapping with end of loader exit)
-    if (heroImg) {
-      tl.to(heroImg, { scale: 1, duration: 1.8, ease: 'expo.out' }, '-=0.9');
-    }
+    if (heroImg) tl.to(heroImg, { scale: 1, duration: 1.8, ease: 'expo.out' }, '-=0.9');
 
-    // Hero title — words rise
     const heroWordInners = heroTitle ? heroTitle.querySelectorAll('.word-inner') : [];
     if (heroWordInners.length) {
       heroTitle.style.visibility = 'visible';
-      tl.to(heroWordInners, {
-        yPercent: 0,
-        duration: 1.0,
-        stagger: 0.06,
-        ease: 'expo.out',
-      }, '-=0.7');
+      tl.to(heroWordInners, { yPercent: 0, duration: 1.0, stagger: 0.06, ease: 'expo.out' }, '-=0.7');
     }
 
     if (heroEyebrow) tl.to(heroEyebrow, { y: 0, opacity: 1, duration: 0.7 }, '-=0.7');
     if (heroSubtitle) tl.to(heroSubtitle, { y: 0, opacity: 1, duration: 0.7 }, '-=0.5');
     tl.to(heroCtaButtons, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08 }, '-=0.4');
     if (heroScroll) tl.from(heroScroll, { opacity: 0, duration: 0.6 }, '-=0.2');
+
+    // Inner pages on first visit: also mark as visited once loader finishes,
+    // so future navigations skip the loader.
+    // (Already handled in onComplete above.)
+  }
+
+  /* =============================================================
+     Shop category filter — toggles visibility of product cards
+  ============================================================= */
+  function setupShopFilter() {
+    const buttons = document.querySelectorAll('.shop-cat[data-cat]');
+    const grid = document.getElementById('shopGrid');
+    if (!buttons.length || !grid) return;
+
+    const cards = grid.querySelectorAll('.product-card[data-cat]');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.cat;
+        buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+
+        cards.forEach((card) => {
+          const matches = cat === 'all' || card.dataset.cat === cat;
+          if (matches) {
+            card.classList.remove('is-filtered-out');
+            gsap.fromTo(card,
+              { opacity: 0, y: 16 },
+              { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out' }
+            );
+          } else {
+            card.classList.add('is-filtered-out');
+          }
+        });
+
+        // Refresh ScrollTrigger because the layout changed
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      });
+    });
   }
 
   /* =============================================================
