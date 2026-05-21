@@ -19,6 +19,16 @@ $announcements = siliq_get_announcement_texts();
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+  <?php if (is_front_page()) : /* SILIQ intro loader — homepage only */ ?>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__brand">
+      <span class="loader__letter">S</span><span class="loader__letter">I</span><span class="loader__letter">L</span><span class="loader__letter">I</span><span class="loader__letter">Q</span>
+    </div>
+    <div class="loader__line"></div>
+    <div class="loader__caption"><span><?php echo esc_html(get_theme_mod('loader_caption', 'Maison de Argent')); ?></span></div>
+  </div>
+  <?php endif; ?>
+
   <!-- Custom cursor -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
@@ -143,12 +153,4 @@ $announcements = siliq_get_announcement_texts();
     </aside>
   </div>
 
-<?php
-// Fallback menu if no menu is assigned
-function siliq_fallback_menu() {
-    echo '<a href="' . esc_url(wc_get_page_permalink('shop')) . '">Shop</a>';
-    echo '<a href="' . esc_url(home_url('/launches')) . '">Launches</a>';
-    echo '<a href="' . esc_url(home_url('/about')) . '">About</a>';
-    echo '<a href="' . esc_url(home_url('/contact')) . '">Contact</a>';
-}
-?>
+<?php /* siliq_fallback_menu() is defined in functions.php */ ?>
