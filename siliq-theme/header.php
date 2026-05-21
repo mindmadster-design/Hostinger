@@ -143,12 +143,4 @@ $announcements = siliq_get_announcement_texts();
     </aside>
   </div>
 
-<?php
-// Fallback menu if no menu is assigned
-function siliq_fallback_menu() {
-    echo '<a href="' . esc_url(wc_get_page_permalink('shop')) . '">Shop</a>';
-    echo '<a href="' . esc_url(home_url('/launches')) . '">Launches</a>';
-    echo '<a href="' . esc_url(home_url('/about')) . '">About</a>';
-    echo '<a href="' . esc_url(home_url('/contact')) . '">Contact</a>';
-}
-?>
+<?php /* siliq_fallback_menu() is defined in functions.php */ ?>
